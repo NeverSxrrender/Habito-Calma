@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ejercicio-fisico",
+    "name": "Ejercicio físico",
+    "description": "Movimiento corporal para fortalecer el organismo y liberar tensiones acumuladas.",
+    "icon": "🏃"
+  },
+  {
+    "id": "sueno-descanso",
+    "name": "Sueño y descanso",
+    "description": "Recuperación profunda del cuerpo y la mente a través del sueño reparador.",
+    "icon": "🌙"
+  },
+  {
+    "id": "alimentacion-basica",
+    "name": "Alimentación básica",
+    "description": "Nutrición sencilla y consciente para mantener energía y salud celular.",
+    "icon": "🥗"
+  },
+  {
+    "id": "bienestar-mental",
+    "name": "Bienestar mental",
+    "description": "Prácticas diarias para cultivar atención plena y equilibrio emocional.",
+    "icon": "🧠"
+  }
+]
