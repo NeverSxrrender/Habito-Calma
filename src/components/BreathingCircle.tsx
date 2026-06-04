@@ -35,7 +35,7 @@ export const BREATHING_PATTERNS: BreathingPattern[] = [
       { name: "Inhala", duration: 4, direction: "expand", instruction: "Inspira mientras el círculo crece..." },
       { name: "Mantén", duration: 4, direction: "hold", instruction: "Mantén el aire, siente la pausa..." },
       { name: "Exhala", duration: 4, direction: "contract", instruction: "Exhala mientras el círculo se reduce..." },
-      { name: "Mantén", duration: 4, direction: "hold", instruction: "Vacío y en calma, sostenla pausa..." },
+      { name: "Mantén", duration: 4, direction: "hold", instruction: "Vacío y en calma, sostén la pausa..." },
     ],
   },
   {
@@ -57,55 +57,57 @@ interface BreathingCircleProps {
   isActive: boolean
 }
 
+function computePhase(pattern: BreathingPattern, elapsedMs: number) {
+  const totalMs = pattern.phases.reduce((sum, p) => sum + p.duration * 1000, 0)
+  const elapsedMod = elapsedMs % totalMs
+
+  let accumulated = 0
+  for (let i = 0; i < pattern.phases.length; i++) {
+    const phase = pattern.phases[i]
+    const phaseMs = phase.duration * 1000
+    if (elapsedMod < accumulated + phaseMs) {
+      const progress = (elapsedMod - accumulated) / phaseMs
+
+      let scale = MIN_SCALE
+      if (phase.direction === "expand") {
+        scale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * progress
+      } else if (phase.direction === "contract") {
+        scale = MAX_SCALE - (MAX_SCALE - MIN_SCALE) * progress
+      } else {
+        let iMax = true
+        for (let j = i - 1; j >= 0; j--) {
+          const prev = pattern.phases[j]
+          if (prev.direction === "expand") { iMax = true; break }
+          if (prev.direction === "contract") { iMax = false; break }
+        }
+        scale = iMax ? MAX_SCALE : MIN_SCALE
+      }
+
+      return { phase, progress, scale }
+    }
+    accumulated += phaseMs
+  }
+
+  const lastPhase = pattern.phases[pattern.phases.length - 1]
+  return { phase: lastPhase, progress: 1, scale: MIN_SCALE }
+}
+
 export default function BreathingCircle({ pattern, isActive }: BreathingCircleProps) {
-  const [progress, setProgress] = useState(0)
-  const [currentPhase, setCurrentPhase] = useState<BreathingPhase>(pattern.phases[0])
+  const [elapsed, setElapsed] = useState(0)
   const frameRef = useRef<number>(0)
   const startTimeRef = useRef<number>(0)
-  const isActiveRef = useRef(isActive)
-  const patternRef = useRef(pattern)
-  const resetRef = useRef(false)
+  const sessionRef = useRef(0)
 
   useEffect(() => {
-    patternRef.current = pattern
-  }, [pattern])
+    if (!isActive) return
 
-  useEffect(() => {
-    isActiveRef.current = isActive
-
-    if (!isActive) {
-      resetRef.current = true
-      return
-    }
-
-    const totalMs = pattern.phases.reduce((sum, p) => sum + p.duration * 1000, 0)
+    const sessionId = ++sessionRef.current
     startTimeRef.current = performance.now()
-    resetRef.current = false
+    setElapsed(0)
 
     const animate = (now: number) => {
-      if (!isActiveRef.current) return
-
-      if (resetRef.current) {
-        setProgress(0)
-        setCurrentPhase(patternRef.current.phases[0])
-        resetRef.current = false
-        return
-      }
-
-      const elapsed = (now - startTimeRef.current) % totalMs
-      let accumulated = 0
-
-      for (let i = 0; i < patternRef.current.phases.length; i++) {
-        const phaseMs = patternRef.current.phases[i].duration * 1000
-        if (elapsed < accumulated + phaseMs) {
-          const phaseProgress = (elapsed - accumulated) / phaseMs
-          setCurrentPhase(patternRef.current.phases[i])
-          setProgress(phaseProgress)
-          break
-        }
-        accumulated += phaseMs
-      }
-
+      if (sessionRef.current !== sessionId) return
+      setElapsed(now - startTimeRef.current)
       frameRef.current = requestAnimationFrame(animate)
     }
 
@@ -116,22 +118,15 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
     }
   }, [isActive, pattern])
 
-  const getScale = (): number => {
-    const p = currentPhase
-    if (p.direction === "expand") return MIN_SCALE + (MAX_SCALE - MIN_SCALE) * progress
-    if (p.direction === "contract") return MAX_SCALE - (MAX_SCALE - MIN_SCALE) * progress
-    return progress < 0.5 ? MAX_SCALE : MIN_SCALE
-  }
+  const { phase: currentPhase, progress: _, scale } = computePhase(pattern, elapsed)
 
   const getInnerScale = (index: number): number => {
-    const base = getScale()
     const factor = 1 - index * 0.025
-    return base * factor
+    return scale * factor
   }
 
   const getOpacity = (index: number): number => {
-    const base = getScale()
-    const normalized = (base - MIN_SCALE) / (MAX_SCALE - MIN_SCALE)
+    const normalized = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE)
     return 0.35 + normalized * 0.35 - index * 0.05
   }
 
@@ -170,7 +165,6 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
                 inset: c.inset,
                 transform: `scale(${s})`,
                 opacity: Math.max(0.1, op),
-                transition: "none",
               }}
             />
           )
@@ -180,12 +174,11 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
             className="absolute rounded-full bg-primary flex items-center justify-center"
             style={{
               inset: "3.5rem",
-              transform: `scale(${getScale() * 0.85})`,
+              transform: `scale(${scale * 0.85})`,
               opacity: Math.max(0.2, getOpacity(4) * 1.3),
-              transition: "none",
             }}
           >
-            <span className="text-white font-display text-sm font-medium" style={{ opacity: 1 }}>
+            <span className="text-white font-display text-sm font-medium">
               {currentPhase.name}
             </span>
           </div>

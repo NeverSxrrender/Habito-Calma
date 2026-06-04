@@ -4,7 +4,6 @@ import { useState } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import BreathingCircle, { BREATHING_PATTERNS, type BreathingPattern } from "@/components/BreathingCircle"
-import CalmTimer from "@/components/CalmTimer"
 import SoundPlayer from "@/components/SoundPlayer"
 
 type Practice = "respiracion" | "mindfulness" | "sonidos"
@@ -12,24 +11,11 @@ type Practice = "respiracion" | "mindfulness" | "sonidos"
 export default function EspacioCalmaPage() {
   const [activePractice, setActivePractice] = useState<Practice | null>(null)
   const [selectedPattern, setSelectedPattern] = useState<BreathingPattern>(BREATHING_PATTERNS[0])
-  const [timerMinutes, setTimerMinutes] = useState(5)
   const [isActive, setIsActive] = useState(false)
-  const [showCompletion, setShowCompletion] = useState(false)
   const [showDisclaimer, setShowDisclaimer] = useState(false)
-
-  const handleStart = () => {
-    setIsActive(true)
-    setShowCompletion(false)
-  }
-
-  const handleComplete = () => {
-    setIsActive(false)
-    setShowCompletion(true)
-  }
 
   const handleExit = () => {
     setIsActive(false)
-    setShowCompletion(false)
     setActivePractice(null)
   }
 
@@ -45,7 +31,7 @@ export default function EspacioCalmaPage() {
                   Espacio de calma
                 </h1>
                 <p className="text-text-muted text-lg font-light max-w-xl mx-auto leading-relaxed">
-                  Un espacio para detenerte y respirar. Tú controlas todo: el sonido, el tiempo, la práctica.
+                  Un espacio para detenerte y respirar. Tú controlas todo: el sonido, la práctica.
                 </p>
               </div>
 
@@ -67,7 +53,7 @@ export default function EspacioCalmaPage() {
                 >
                   <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">🧘</span>
                   <h3 className="font-display font-semibold text-foreground mb-1.5">Mindfulness básico</h3>
-                  <p className="text-xs text-text-muted">Un momento de atención plena con temporizador consciente.</p>
+                  <p className="text-xs text-text-muted">Un momento de atención plena en tu día.</p>
                 </button>
 
                 <button
@@ -116,13 +102,6 @@ export default function EspacioCalmaPage() {
               </div>
 
               <div className="bg-surface border border-muted/40 rounded-2xl p-6 sm:p-8">
-                {showCompletion && (
-                  <div className="text-center mb-6 p-4 bg-primary-light/20 rounded-xl">
-                    <p className="text-primary-dark font-medium">Práctica completada</p>
-                    <p className="text-sm text-text-muted">Has dedicado este tiempo a tu bienestar. Respira.</p>
-                  </div>
-                )}
-
                 {activePractice === "respiracion" && (
                   <BreathingCircle pattern={selectedPattern} isActive={isActive} />
                 )}
@@ -151,10 +130,7 @@ export default function EspacioCalmaPage() {
                           {BREATHING_PATTERNS.map((p) => (
                             <button
                               key={p.id}
-                              onClick={() => {
-                                setSelectedPattern(p)
-                                setIsActive(false)
-                              }}
+                              onClick={() => setSelectedPattern(p)}
                               className={`text-left px-4 py-2.5 rounded-xl border text-sm transition-all duration-300 ${
                                 selectedPattern.id === p.id
                                   ? "border-primary/50 bg-primary-light/15 text-foreground"
@@ -198,35 +174,22 @@ export default function EspacioCalmaPage() {
                     </>
                   )}
 
-                  <div className="flex items-center justify-center gap-4">
-                    <label htmlFor="timer-minutes" className="text-sm text-text-muted">
-                      Duración:
-                    </label>
-                    <select
-                      id="timer-minutes"
-                      value={timerMinutes}
-                      onChange={(e) => setTimerMinutes(Number(e.target.value))}
-                      className="bg-muted/30 border border-muted/50 rounded-lg px-3 py-1.5 text-sm text-foreground focus:outline-none focus:border-primary/50"
-                      aria-label="Duración de la práctica en minutos"
-                    >
-                      <option value={1}>1 min</option>
-                      <option value={2}>2 min</option>
-                      <option value={3}>3 min</option>
-                      <option value={5}>5 min</option>
-                      <option value={10}>10 min</option>
-                    </select>
-                  </div>
-
-                  <CalmTimer initialMinutes={timerMinutes} onComplete={handleComplete} />
-
-                  <div className="mt-4 text-center">
-                    {!isActive && !showCompletion && (
+                  <div className="flex justify-center">
+                    {!isActive ? (
                       <button
-                        onClick={handleStart}
+                        onClick={() => setIsActive(true)}
                         className="px-6 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary-dark transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50"
                         aria-label="Iniciar práctica"
                       >
                         Iniciar práctica
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => setIsActive(false)}
+                        className="px-6 py-2.5 rounded-full bg-warning text-white text-sm font-medium hover:bg-warning/80 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-warning/50"
+                        aria-label="Pausar práctica"
+                      >
+                        Pausar
                       </button>
                     )}
                   </div>
