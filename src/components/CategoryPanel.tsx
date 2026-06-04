@@ -57,8 +57,8 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-start justify-center transition-opacity duration-[400ms] ease-in-out ${
-        visible ? "bg-black/15" : "bg-transparent pointer-events-none"
+      className={`fixed inset-0 z-50 flex items-start justify-center transition-opacity duration-[400ms] ease-in-out bg-black/15 ${
+        visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={handleBackdropClick}
       role="dialog"
