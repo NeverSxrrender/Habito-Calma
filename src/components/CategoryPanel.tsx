@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import type { Habit, HabitCategory } from "@/types/habit"
 
@@ -25,7 +25,6 @@ interface CategoryPanelProps {
 export default function CategoryPanel({ category, habits, onClose }: CategoryPanelProps) {
   const [openHabit, setOpenHabit] = useState<string | null>(null)
   const [visible, setVisible] = useState(false)
-  const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     requestAnimationFrame(() => setVisible(true))
@@ -58,8 +57,8 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-start justify-center transition-all duration-[600ms] ease-in-out ${
-        visible ? "bg-black/20 backdrop-blur-sm" : "bg-transparent pointer-events-none"
+      className={`fixed inset-0 z-50 flex items-start justify-center transition-opacity duration-[600ms] ease-in-out ${
+        visible ? "bg-black/15" : "bg-transparent pointer-events-none"
       }`}
       onClick={handleBackdropClick}
       role="dialog"
@@ -67,20 +66,19 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
       aria-label={`Panel de ${category.name}`}
     >
       <div
-        ref={panelRef}
         className={`mt-16 mb-16 w-[85%] sm:w-[75%] lg:w-[70%] max-w-4xl max-h-[82dvh] overflow-y-auto rounded-3xl bg-surface shadow-xl border border-muted/30 transition-all duration-[600ms] ease-out ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         }`}
         style={{ scrollbarWidth: "thin", scrollbarColor: "#D5D0C8 transparent" }}
       >
-        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-6 bg-surface/90 backdrop-blur-sm border-b border-muted/30 rounded-t-3xl">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-6 bg-surface/95 border-b border-muted/30 rounded-t-3xl">
           <div className="flex items-center gap-3">
             <span className="text-2xl sm:text-3xl">{category.icon}</span>
             <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground">{category.name}</h2>
           </div>
           <button
             onClick={handleClose}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm text-text-muted hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm text-text-muted hover:text-foreground hover:bg-muted/50 transition-colors duration-300"
             aria-label="Cerrar panel"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -108,9 +106,9 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                 return (
                   <article
                     key={habit.slug}
-                    className={`rounded-xl border transition-all duration-400 ${
+                    className={`rounded-xl border transition-colors duration-400 ${
                       isOpen
-                        ? "border-primary-light/40 bg-primary-light/5 shadow-sm"
+                        ? "border-primary-light/40 bg-primary-light/5"
                         : "border-muted/40 bg-surface hover:border-muted-dark/50"
                     }`}
                   >
@@ -144,12 +142,8 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                       </svg>
                     </button>
 
-                    <div
-                      className={`overflow-hidden transition-all duration-[500ms] ease-in-out ${
-                        isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <div className="px-4 sm:px-5 pb-5 space-y-5 border-t border-muted/20 pt-4">
+                    {isOpen && (
+                      <div className="px-4 sm:px-5 pb-5 space-y-5 border-t border-muted/20 pt-4 animate-fade-in-up">
                         <div>
                           <h5 className="font-display font-semibold text-foreground text-sm mb-1.5">Qué es</h5>
                           <p className="text-foreground text-sm leading-relaxed">{habit.description}</p>
@@ -200,9 +194,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                           <Link
                             href="/espacio-calma"
                             className="inline-flex items-center gap-1 text-xs font-medium text-secondary hover:text-secondary/80 transition-colors duration-200"
-                            onClick={() => {
-                              setTimeout(handleClose, 100)
-                            }}
+                            onClick={() => setTimeout(handleClose, 100)}
                           >
                             Ir a {habit.mindfulnessName}
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -211,7 +203,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </article>
                 )
               })}
@@ -219,10 +211,10 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
           </div>
         </div>
 
-        <div className="sticky bottom-0 flex justify-center p-4 bg-surface/90 backdrop-blur-sm border-t border-muted/30 rounded-b-3xl">
+        <div className="sticky bottom-0 flex justify-center p-4 bg-surface/95 border-t border-muted/30 rounded-b-3xl">
           <button
             onClick={handleClose}
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary/10 text-primary-dark text-sm font-medium hover:bg-primary/20 transition-all duration-300"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary/10 text-primary-dark text-sm font-medium hover:bg-primary/20 transition-colors duration-300"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />

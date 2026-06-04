@@ -82,7 +82,7 @@ export default function HomePage() {
 
         <div
           className={`transition-all duration-[600ms] ease-in-out ${
-            selectedCategory ? "opacity-30 scale-[0.97] blur-[1px] pointer-events-none" : "opacity-100 scale-100 blur-0"
+            selectedCategory ? "opacity-30 scale-[0.97] pointer-events-none" : "opacity-100 scale-100"
           }`}
         >
           <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="categorias">
