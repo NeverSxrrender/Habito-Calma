@@ -32,7 +32,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
   const handleClose = useCallback(() => {
     setVisible(false)
-    setTimeout(onClose, 300)
+    setTimeout(onClose, 400)
   }, [onClose])
 
   useEffect(() => {
