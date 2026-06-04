@@ -32,7 +32,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
   const handleClose = useCallback(() => {
     setVisible(false)
-    setTimeout(onClose, 600)
+    setTimeout(onClose, 300)
   }, [onClose])
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-start justify-center transition-opacity duration-[600ms] ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-start justify-center transition-opacity duration-[400ms] ease-in-out ${
         visible ? "bg-black/15" : "bg-transparent pointer-events-none"
       }`}
       onClick={handleBackdropClick}
@@ -66,8 +66,8 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
       aria-label={`Panel de ${category.name}`}
     >
       <div
-        className={`mt-16 mb-16 w-[85%] sm:w-[75%] lg:w-[70%] max-w-4xl max-h-[82dvh] overflow-y-auto rounded-3xl bg-surface shadow-xl border border-muted/30 transition-all duration-[600ms] ease-out ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        className={`mt-16 mb-16 w-[85%] sm:w-[75%] lg:w-[70%] max-w-4xl max-h-[82dvh] overflow-y-auto rounded-3xl bg-surface shadow-xl border border-muted/30 transition-all duration-[400ms] ease-out ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
         style={{ scrollbarWidth: "thin", scrollbarColor: "#D5D0C8 transparent" }}
       >
