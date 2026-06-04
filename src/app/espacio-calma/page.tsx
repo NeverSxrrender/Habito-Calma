@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import BreathingCircle from "@/components/BreathingCircle"
+import BreathingCircle, { BREATHING_PATTERNS, type BreathingPattern } from "@/components/BreathingCircle"
 import CalmTimer from "@/components/CalmTimer"
 import SoundPlayer from "@/components/SoundPlayer"
 
@@ -11,10 +11,11 @@ type Practice = "respiracion" | "mindfulness" | "sonidos"
 
 export default function EspacioCalmaPage() {
   const [activePractice, setActivePractice] = useState<Practice | null>(null)
-  const [breathingDuration, setBreathingDuration] = useState(4)
+  const [selectedPattern, setSelectedPattern] = useState<BreathingPattern>(BREATHING_PATTERNS[0])
   const [timerMinutes, setTimerMinutes] = useState(5)
   const [isActive, setIsActive] = useState(false)
   const [showCompletion, setShowCompletion] = useState(false)
+  const [showDisclaimer, setShowDisclaimer] = useState(false)
 
   const handleStart = () => {
     setIsActive(true)
@@ -122,15 +123,13 @@ export default function EspacioCalmaPage() {
                   </div>
                 )}
 
-                <BreathingCircle duration={breathingDuration} isActive={isActive && activePractice === "respiracion"} />
+                {activePractice === "respiracion" && (
+                  <BreathingCircle pattern={selectedPattern} isActive={isActive} />
+                )}
 
                 {activePractice === "mindfulness" && (
                   <div className="text-center py-8">
-                    <div
-                      className={`transition-all duration-700 ease-in-out ${
-                        isActive ? "opacity-100" : "opacity-40"
-                      }`}
-                    >
+                    <div className={`transition-all duration-700 ease-in-out ${isActive ? "opacity-100" : "opacity-40"}`}>
                       <div className="w-24 h-24 mx-auto rounded-full bg-secondary-light/30 flex items-center justify-center mb-4">
                         <span className="text-3xl">🧘</span>
                       </div>
@@ -143,28 +142,63 @@ export default function EspacioCalmaPage() {
                   </div>
                 )}
 
-                <div className="my-6">
+                <div className="my-6 space-y-4">
                   {activePractice === "respiracion" && (
-                    <div className="flex items-center justify-center gap-4 mb-4">
-                      <label htmlFor="breathing-duration" className="text-sm text-text-muted">
-                        Ritmo (segundos):
-                      </label>
-                      <select
-                        id="breathing-duration"
-                        value={breathingDuration}
-                        onChange={(e) => setBreathingDuration(Number(e.target.value))}
-                        className="bg-muted/30 border border-muted/50 rounded-lg px-3 py-1.5 text-sm text-foreground focus:outline-none focus:border-primary/50"
-                        aria-label="Duración del ciclo de respiración"
-                      >
-                        <option value={3}>3 seg</option>
-                        <option value={4}>4 seg</option>
-                        <option value={5}>5 seg</option>
-                        <option value={6}>6 seg</option>
-                      </select>
-                    </div>
+                    <>
+                      <div className="space-y-2">
+                        <label className="text-sm text-text-muted block">Tipo de respiración</label>
+                        <div className="grid grid-cols-1 gap-2">
+                          {BREATHING_PATTERNS.map((p) => (
+                            <button
+                              key={p.id}
+                              onClick={() => {
+                                setSelectedPattern(p)
+                                setIsActive(false)
+                              }}
+                              className={`text-left px-4 py-2.5 rounded-xl border text-sm transition-all duration-300 ${
+                                selectedPattern.id === p.id
+                                  ? "border-primary/50 bg-primary-light/15 text-foreground"
+                                  : "border-muted/40 bg-muted/20 text-text-muted hover:border-muted-dark/50"
+                              }`}
+                              aria-pressed={selectedPattern.id === p.id}
+                            >
+                              <span className="font-medium">{p.name}</span>
+                              <span className="block text-xs text-text-light mt-0.5">{p.description}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex justify-center">
+                        <button
+                          onClick={() => setShowDisclaimer(!showDisclaimer)}
+                          className="text-xs text-text-light hover:text-text-muted underline underline-offset-2 transition-colors duration-200"
+                          aria-expanded={showDisclaimer}
+                        >
+                          {showDisclaimer ? "Ocultar aviso" : "Aviso"}
+                        </button>
+                      </div>
+
+                      {showDisclaimer && (
+                        <div className="bg-warning/8 border border-warning/15 rounded-xl p-4 text-xs text-text-muted leading-relaxed space-y-2">
+                          <p>
+                            Las técnicas de respiración aquí descritas son herramientas de relajación general y no sustituyen atención médica ni tratamiento profesional.
+                          </p>
+                          <p>
+                            Si durante la práctica experimentas mareo, malestar o incomodidad, detén el ejercicio y respira con normalidad.
+                          </p>
+                          <p>
+                            Personas con afecciones respiratorias, cardiovasculares, ansiedad severa u otras condiciones médicas deben adaptar los ejercicios a su comodidad.
+                          </p>
+                          <p className="font-medium">
+                            El uso de estas técnicas es bajo tu propia responsabilidad.
+                          </p>
+                        </div>
+                      )}
+                    </>
                   )}
 
-                  <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="flex items-center justify-center gap-4">
                     <label htmlFor="timer-minutes" className="text-sm text-text-muted">
                       Duración:
                     </label>
