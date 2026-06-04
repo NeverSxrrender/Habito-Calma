@@ -24,11 +24,44 @@
 }
 
 body {
-  background: var(--color-background);
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(168, 213, 203, 0.15) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(212, 201, 224, 0.12) 0%, transparent 100%);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
   color: var(--color-foreground);
   font-family: var(--font-sans);
   line-height: 1.7;
   font-size: 17px;
+  animation: ambient-drift 45s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-drift {
+  0% { background-position: 0% 0%, 100% 100%; }
+  100% { background-position: 100% 100%, 0% 0%; }
+}
+
+@keyframes leaf-drift-1 {
+  0% { transform: translateX(-60px) rotate(0deg); opacity: 0; }
+  12% { opacity: 0.45; }
+  85% { opacity: 0.35; }
+  100% { transform: translateX(calc(100vw + 100px)) rotate(520deg); opacity: 0; }
+}
+
+@keyframes leaf-drift-2 {
+  0% { transform: translateX(-60px) rotate(0deg) translateY(0); opacity: 0; }
+  12% { opacity: 0.4; }
+  50% { transform: translateX(calc(50vw)) rotate(280deg) translateY(-25px); }
+  85% { opacity: 0.3; }
+  100% { transform: translateX(calc(100vw + 100px)) rotate(560deg) translateY(0); opacity: 0; }
+}
+
+@keyframes leaf-drift-3 {
+  0% { transform: translateX(-60px) rotate(0deg) scale(1); opacity: 0; }
+  12% { opacity: 0.4; }
+  85% { opacity: 0.3; }
+  100% { transform: translateX(calc(100vw + 100px)) rotate(-380deg) scale(1.2); opacity: 0; }
 }
 
 @keyframes breathe {
