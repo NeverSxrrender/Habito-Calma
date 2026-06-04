@@ -2,6 +2,7 @@ export interface HabitCategory {
   id: string
   name: string
   description: string
+  introScientific: string
   icon: string
 }
 

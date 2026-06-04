@@ -3,24 +3,28 @@
     "id": "ejercicio-fisico",
     "name": "Ejercicio físico",
     "description": "Movimiento corporal para fortalecer el organismo y liberar tensiones acumuladas.",
+    "introScientific": "El movimiento no es un lujo: es una necesidad biológica. El cuerpo humano está diseñado para desplazarse, cargar, estirarse y contraerse. Cuando el movimiento disminuye, el organismo entra en un estado de ahorro energético que afecta a todos los sistemas: el cardiovascular se vuelve menos eficiente, el muscular se atrofia, el metabolismo se ralentiza y el cerebro recibe menos factores neurotróficos (como el BDNF) que son esenciales para la plasticidad neuronal y la regulación del estado de ánimo. Recuperar el movimiento diario —incluso en dosis pequeñas— restablece la comunicación entre los sistemas del cuerpo.",
     "icon": "🏃"
   },
   {
     "id": "sueno-descanso",
     "name": "Sueño y descanso",
     "description": "Recuperación profunda del cuerpo y la mente a través del sueño reparador.",
+    "introScientific": "Dormir no es un estado pasivo: es un proceso fisiológico activo y estructurado en el que el cuerpo realiza funciones esenciales que no puede hacer durante la vigilia. El sistema glinfático cerebral elimina toxinas como la beta-amiloide, el sistema inmunológico se refuerza mediante la producción de citocinas, y el sistema endocrino regula hormonas clave como el cortisol, la hormona del crecimiento y la leptina. Cada fase del sueño —ligero, profundo y REM— cumple una función específica e irremplazable para la salud física y mental.",
     "icon": "🌙"
   },
   {
     "id": "alimentacion-basica",
     "name": "Alimentación básica",
     "description": "Nutrición sencilla y consciente para mantener energía y salud celular.",
+    "introScientific": "Cada célula del cuerpo obtiene del torrente sanguíneo los nutrientes que necesita para funcionar. La calidad de esa 'materia prima' depende directamente de lo que comemos. Los alimentos no solo aportan calorías: contienen vitaminas, minerales, fitoquímicos, fibra y ácidos grasos esenciales que regulan desde la expresión genética (epigenética) hasta la composición de la microbiota intestinal. Establecer patrones alimentarios regulares y centrados en alimentos reales es una de las herramientas más potentes para mantener la salud metabólica y prevenir la inflamación crónica de bajo grado.",
     "icon": "🥗"
   },
   {
     "id": "bienestar-mental",
     "name": "Bienestar mental",
     "description": "Prácticas diarias para cultivar atención plena y equilibrio emocional.",
+    "introScientific": "La mente no es una entidad separada del cuerpo: es el resultado de la actividad de redes neuronales que responden a estímulos, pensamientos y emociones. El estrés crónico mantiene activado el eje hipotalámico-pituitario-adrenal (HPA), elevando los niveles de cortisol y desregulando el sistema nervioso autónomo. Las prácticas de bienestar mental —como la respiración consciente, la meditación o la pausa digital— actúan directamente sobre estos sistemas, fortaleciendo la corteza prefrontal, reduciendo la reactividad de la amígdala y aumentando la variabilidad de la frecuencia cardíaca (VFC), un marcador directo de resiliencia al estrés.",
     "icon": "🧠"
   }
 ]

@@ -1,15 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState, useMemo } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import HabitCard from "@/components/HabitCard"
+import CategoryPanel from "@/components/CategoryPanel"
 import categories from "@/data/categories.json"
 import habitsData from "@/data/habits.json"
-import type { Habit } from "@/types/habit"
+import type { Habit, HabitCategory } from "@/types/habit"
 
 const habits = habitsData as Habit[]
+const allCategories = categories as HabitCategory[]
 
 const categoryIcons: Record<string, string> = {
   "ejercicio-fisico": "🏃",
@@ -20,6 +22,7 @@ const categoryIcons: Record<string, string> = {
 
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null)
+  const [selectedCategory, setSelectedCategory] = useState<HabitCategory | null>(null)
 
   useEffect(() => {
     const el = heroRef.current
@@ -30,6 +33,14 @@ export default function HomePage() {
   }, [])
 
   const featuredHabits = habits.filter((h) => h.featured).slice(0, 8)
+
+  const categoryHabits = useMemo(
+    () => (selectedCategory ? habits.filter((h) => h.categoryId === selectedCategory.id) : []),
+    [selectedCategory]
+  )
+
+  const openCategory = (cat: HabitCategory) => setSelectedCategory(cat)
+  const closeCategory = () => setSelectedCategory(null)
 
   return (
     <>
@@ -69,83 +80,99 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="categorias">
-          <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-3">Categorías</h2>
-          <p className="text-text-muted mb-8 max-w-lg">Explora hábitos organizados por área de bienestar.</p>
+        <div
+          className={`transition-all duration-[600ms] ease-in-out ${
+            selectedCategory ? "opacity-30 scale-[0.97] blur-[1px] pointer-events-none" : "opacity-100 scale-100 blur-0"
+          }`}
+        >
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="categorias">
+            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-3">Categorías</h2>
+            <p className="text-text-muted mb-8 max-w-lg">Explora hábitos organizados por área de bienestar.</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {categories.map((cat) => (
-              <Link
-                key={cat.id}
-                href={`/catalogo?categoria=${cat.id}`}
-                className="group p-6 rounded-2xl bg-surface border border-muted/40 hover:border-primary-light/40 hover:shadow-sm transition-all duration-400"
-              >
-                <span className="text-3xl block mb-3">{categoryIcons[cat.id] || "📋"}</span>
-                <h3 className="font-display font-semibold text-foreground mb-1.5">{cat.name}</h3>
-                <p className="text-xs text-text-muted leading-relaxed">{cat.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-1">
-                Hábitos destacados
-              </h2>
-              <p className="text-text-muted">Seleccionados para empezar tu camino de calma.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {allCategories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => openCategory(cat)}
+                  className="group p-6 rounded-2xl bg-surface border border-muted/40 hover:border-primary-light/40 hover:shadow-sm transition-all duration-400 text-left w-full"
+                  aria-label={`Abrir panel: ${cat.name}`}
+                >
+                  <span className="text-3xl block mb-3">{categoryIcons[cat.id] || "📋"}</span>
+                  <h3 className="font-display font-semibold text-foreground mb-1.5">{cat.name}</h3>
+                  <p className="text-xs text-text-muted leading-relaxed">{cat.description}</p>
+                </button>
+              ))}
             </div>
-            <Link
-              href="/catalogo"
-              className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-primary-dark hover:text-primary transition-colors duration-200"
-            >
-              Ver todos
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
+          </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {featuredHabits.map((habit) => (
-              <HabitCard key={habit.slug} habit={habit} compact />
-            ))}
-          </div>
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-1">
+                  Hábitos destacados
+                </h2>
+                <p className="text-text-muted">Seleccionados para empezar tu camino de calma.</p>
+              </div>
+              <Link
+                href="/catalogo"
+                className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-primary-dark hover:text-primary transition-colors duration-200"
+              >
+                Ver todos
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
 
-          <div className="mt-8 text-center sm:hidden">
-            <Link
-              href="/catalogo"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary-dark hover:text-primary transition-colors duration-200"
-            >
-              Ver todos los hábitos
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </section>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {featuredHabits.map((habit) => (
+                <HabitCard key={habit.slug} habit={habit} compact />
+              ))}
+            </div>
 
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="rounded-3xl bg-gradient-to-br from-primary-light/20 via-secondary-light/10 to-tertiary-light/20 p-8 sm:p-12 text-center">
-            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-3">
-              Espacio de calma
-            </h2>
-            <p className="text-text-muted max-w-md mx-auto mb-6">
-              Un lugar para detenerte y respirar. Prácticas guiadas, sonidos relajantes y un temporizador consciente.
-            </p>
-            <Link
-              href="/espacio-calma"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-secondary text-white font-medium text-sm hover:bg-secondary/80 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-secondary/50"
-            >
-              Entrar al espacio de calma
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-        </section>
+            <div className="mt-8 text-center sm:hidden">
+              <Link
+                href="/catalogo"
+                className="inline-flex items-center gap-1 text-sm font-medium text-primary-dark hover:text-primary transition-colors duration-200"
+              >
+                Ver todos los hábitos
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </section>
+
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="rounded-3xl bg-gradient-to-br from-primary-light/20 via-secondary-light/10 to-tertiary-light/20 p-8 sm:p-12 text-center">
+              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-3">
+                Espacio de calma
+              </h2>
+              <p className="text-text-muted max-w-md mx-auto mb-6">
+                Un lugar para detenerte y respirar. Prácticas guiadas, sonidos relajantes y un temporizador consciente.
+              </p>
+              <Link
+                href="/espacio-calma"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-secondary text-white font-medium text-sm hover:bg-secondary/80 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-secondary/50"
+              >
+                Entrar al espacio de calma
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </section>
+        </div>
       </main>
+
+      {selectedCategory && (
+        <CategoryPanel
+          category={selectedCategory}
+          habits={categoryHabits}
+          onClose={closeCategory}
+        />
+      )}
+
       <Footer />
     </>
   )
