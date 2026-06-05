@@ -23,10 +23,7 @@ export default function EspacioCalmaPage() {
   return (
     <>
       <Header />
-      <main
-        className="relative min-h-screen transition-colors duration-1000"
-        style={{ background: "linear-gradient(to bottom, #0d1117 0%, #111827 50%, #0f1a15 100%)" }}
-      >
+      <main className="relative min-h-screen" style={{ backgroundColor: "#0d1117" }}>
         <StarryBackground />
         <section className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {!activePractice ? (

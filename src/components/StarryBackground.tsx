@@ -78,7 +78,7 @@ export default function StarryBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0 }}
+      style={{ zIndex: 0, position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}
       aria-hidden="true"
     />
   )
