@@ -5,7 +5,7 @@ import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import BreathingCircle, { BREATHING_PATTERNS, type BreathingPattern } from "@/components/BreathingCircle"
 import SoundPlayer from "@/components/SoundPlayer"
-import StarryBackground from "@/components/StarryBackground"
+
 
 type Practice = "respiracion" | "mindfulness" | "sonidos"
 
@@ -22,10 +22,9 @@ export default function EspacioCalmaPage() {
 
   return (
     <>
-      <StarryBackground />
+      <style>{'body { background: #0d1117 !important; }'}</style>
       <Header />
       <main className="relative min-h-screen">
-        <StarryBackground />
         <section className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {!activePractice ? (
             <>

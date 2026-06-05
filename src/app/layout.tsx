@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Quicksand } from "next/font/google"
 import "./globals.css"
+import BackgroundLayer from "@/components/BackgroundLayer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,7 +45,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`scroll-smooth ${inter.variable} ${quicksand.variable}`}>
       <body className="min-h-dvh flex flex-col antialiased">
-        {children}
+        <BackgroundLayer />
+        <div className="relative z-10 flex-1 flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   )
