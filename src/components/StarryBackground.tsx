@@ -44,7 +44,8 @@ export default function StarryBackground() {
     }
 
     const draw = (time: number) => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = "#0d1117"
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       stars.forEach((star) => {
         const twinkle = Math.sin(time * 0.001 * star.speed * 60 + star.twinkleOffset)
@@ -77,8 +78,7 @@ export default function StarryBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0, position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}
+      className="fixed inset-0 -z-10 pointer-events-none"
       aria-hidden="true"
     />
   )
