@@ -78,7 +78,7 @@ export default function StarryBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
+      className="fixed inset-0 pointer-events-none -z-10"
       aria-hidden="true"
     />
   )
