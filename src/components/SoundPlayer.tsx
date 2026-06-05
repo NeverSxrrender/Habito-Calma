@@ -119,15 +119,15 @@ export default function SoundPlayer() {
               className={`flex items-center gap-3 p-4 rounded-xl border transition-all duration-300 text-left ${
                 isActive
                   ? "border-primary bg-primary-light/20 shadow-sm"
-                  : "border-muted/40 bg-surface hover:border-primary-light/40 hover:bg-primary-light/10"
+                  : "border-white/10 bg-white/5 hover:border-primary-light/40 hover:bg-primary-light/10"
               }`}
               aria-label={`${isActive ? "Detener" : "Reproducir"}: ${sound.name}`}
               aria-pressed={isActive}
             >
               <span className="text-2xl">{sound.icon}</span>
               <div className="min-w-0">
-                <p className="font-medium text-foreground text-sm">{sound.name}</p>
-                <p className="text-xs text-text-muted truncate">{sound.description}</p>
+                <p className="font-medium text-white/90 text-sm">{sound.name}</p>
+                <p className="text-xs text-white/60 truncate">{sound.description}</p>
               </div>
               {isActive && (
                 <span className="ml-auto shrink-0 flex gap-0.5" aria-hidden="true">
@@ -142,8 +142,8 @@ export default function SoundPlayer() {
       </div>
 
       {isPlaying && activeSound && (
-        <div className="mt-4 flex items-center gap-4 p-4 bg-surface rounded-xl border border-muted/40">
-          <label htmlFor="volume-slider" className="text-sm text-text-muted shrink-0">
+        <div className="mt-4 flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+          <label htmlFor="volume-slider" className="text-sm text-white/60 shrink-0">
             Volumen
           </label>
           <input

@@ -142,11 +142,11 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
     return (
       <div className="flex flex-col items-center justify-center gap-6 py-8">
         <div className="relative w-48 h-48 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-primary-light/15" />
-          <div className="absolute inset-4 rounded-full bg-primary-light/8" />
-          <span className="relative text-4xl opacity-40">○</span>
+          <div className="absolute inset-0 rounded-full bg-white/10" />
+          <div className="absolute inset-4 rounded-full bg-white/5" />
+          <span className="relative text-4xl opacity-60 text-white/40">○</span>
         </div>
-        <p className="text-text-muted text-sm">La respiración aparecerá aquí al iniciar la práctica</p>
+        <p className="text-white/60 text-sm">La respiración aparecerá aquí al iniciar la práctica</p>
       </div>
     )
   }
@@ -184,7 +184,7 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
           </div>
         )}
       </div>
-      <p className="text-text-muted text-sm">{currentPhase.instruction}</p>
+      <p className="text-white/60 text-sm">{currentPhase.instruction}</p>
     </div>
   )
 }
