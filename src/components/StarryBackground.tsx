@@ -26,9 +26,6 @@ interface ShootingStar {
   delay: number
 }
 
-const COLS = 120
-const ROWS = 70
-
 export default function StarryBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -41,21 +38,14 @@ export default function StarryBackground() {
     let animationId: number
     let stars: Star[] = []
     const shootingStars: ShootingStar[] = []
-    let height1: Float32Array, height2: Float32Array
-    let cellW = 1, cellH = 1
-    let mouseCol = -1, mouseRow = -1
-    let screenW = 0, screenH = 0
+    let screenW = 0
+    let screenH = 0
 
     const resize = () => {
       screenW = window.innerWidth
       screenH = window.innerHeight
       canvas.width = screenW
       canvas.height = screenH
-      cellW = screenW / COLS
-      cellH = screenH / ROWS
-      const size = COLS * ROWS
-      height1 = new Float32Array(size)
-      height2 = new Float32Array(size)
     }
 
     const createStars = () => {
@@ -94,87 +84,19 @@ export default function StarryBackground() {
       }, delay)
     }
 
-    const addDrop = (col: number, row: number) => {
-      const cx = Math.round(col)
-      const cy = Math.round(row)
-      const radius = 6
-      for (let dy = -radius; dy <= radius; dy++) {
-        for (let dx = -radius; dx <= radius; dx++) {
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist > radius) continue
-          const c = cx + dx
-          const r = cy + dy
-          if (c < 1 || c >= COLS - 1 || r < 1 || r >= ROWS - 1) continue
-          const idx = r * COLS + c
-          const val = Math.cos((dist / radius) * (Math.PI / 2))
-          height1[idx] += val * 0.8
-        }
-      }
-    }
-
-    const stepWaves = () => {
-      for (let r = 1; r < ROWS - 1; r++) {
-        for (let c = 1; c < COLS - 1; c++) {
-          const idx = r * COLS + c
-          const cur = height1[idx]
-          const sum =
-            height1[(r - 1) * COLS + c] +
-            height1[(r + 1) * COLS + c] +
-            height1[r * COLS + (c - 1)] +
-            height1[r * COLS + (c + 1)]
-          const next = (sum / 2 - height2[idx]) * 0.985
-          height2[idx] = cur
-          height1[idx] = next
-        }
-      }
-    }
-
-    const getHeight = (x: number, y: number) => {
-      const c = Math.floor(x / cellW)
-      const r = Math.floor(y / cellH)
-      if (c < 1 || c >= COLS - 1 || r < 1 || r >= ROWS - 1) return 0
-      return height1[r * COLS + c]
-    }
-
-    const getGradient = (x: number, y: number) => {
-      const c = Math.floor(x / cellW)
-      const r = Math.floor(y / cellH)
-      if (c < 2 || c >= COLS - 2 || r < 2 || r >= ROWS - 2) return { gx: 0, gy: 0 }
-      const idx = r * COLS + c
-      return {
-        gx: (height1[idx + 1] - height1[idx - 1]),
-        gy: (height1[(r + 1) * COLS + c] - height1[(r - 1) * COLS + c]),
-      }
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseCol = e.clientX / cellW
-      mouseRow = e.clientY / cellH
-      addDrop(mouseCol, mouseRow)
-    }
-
     const draw = (time: number) => {
       ctx.fillStyle = "#0d1117"
       ctx.fillRect(0, 0, screenW, screenH)
 
-      stepWaves()
-
       for (const star of stars) {
         const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset)
-        let opacity = star.baseOpacity * (0.5 + twinkle * 0.5)
+        const opacity = star.baseOpacity * (0.5 + twinkle * 0.5)
 
         const driftX = Math.sin(time * star.driftXSpeed + star.driftXOffset) * star.driftAmplitude
         const driftY = Math.sin(time * star.driftYSpeed + star.driftYOffset) * star.driftAmplitude * 0.3
 
-        let sx = star.x + driftX
-        let sy = star.y + driftY
-
-        const h = getHeight(sx, sy)
-        const grad = getGradient(sx, sy)
-        const displace = h * 12
-        sx += grad.gx * displace
-        sy += grad.gy * displace
-        opacity += h * 0.3
+        const sx = star.x + driftX
+        const sy = star.y + driftY
 
         const glow = star.radius > 1.2
         if (glow) {
@@ -186,7 +108,7 @@ export default function StarryBackground() {
 
         ctx.beginPath()
         ctx.arc(sx, sy, star.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 252, 240, ${Math.max(0, opacity)})`
+        ctx.fillStyle = `rgba(255, 252, 240, ${opacity})`
         if (glow) {
           ctx.shadowBlur = 6
           ctx.shadowColor = `rgba(200, 230, 220, ${opacity * 0.6})`
@@ -229,18 +151,17 @@ export default function StarryBackground() {
     animationId = requestAnimationFrame(draw)
 
     window.addEventListener("resize", () => { resize(); createStars() })
-    window.addEventListener("mousemove", handleMouseMove)
 
     return () => {
       cancelAnimationFrame(animationId)
       window.removeEventListener("resize", resize)
-      window.removeEventListener("mousemove", handleMouseMove)
     }
   }, [])
 
   return (
     <canvas
       ref={canvasRef}
+      id="stars-canvas"
       className="fixed inset-0 pointer-events-none -z-10"
       aria-hidden="true"
     />
