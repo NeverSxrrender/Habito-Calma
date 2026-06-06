@@ -23,13 +23,11 @@ interface ShootingStar {
   angle: number
   length: number
   opacity: number
+  delay: number
 }
 
-interface Ripple {
-  x: number
-  y: number
-  birth: number
-}
+const COLS = 120
+const ROWS = 70
 
 export default function StarryBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -43,20 +41,21 @@ export default function StarryBackground() {
     let animationId: number
     let stars: Star[] = []
     const shootingStars: ShootingStar[] = []
-    const ripples: Ripple[] = []
-    let mouseX = -1000
-    let mouseY = -1000
-    let lastMouseX = -1000
-    let lastMouseY = -1000
-    let lastRippleTime = 0
-
-    const RIPPLE_LIFETIME = 1200
-    const RIPPLE_MAX_RADIUS = 80
-    const RIPPLE_INTERVAL = 60
+    let height1: Float32Array, height2: Float32Array
+    let cellW = 1, cellH = 1
+    let mouseCol = -1, mouseRow = -1
+    let screenW = 0, screenH = 0
 
     const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      screenW = window.innerWidth
+      screenH = window.innerHeight
+      canvas.width = screenW
+      canvas.height = screenH
+      cellW = screenW / COLS
+      cellH = screenH / ROWS
+      const size = COLS * ROWS
+      height1 = new Float32Array(size)
+      height2 = new Float32Array(size)
     }
 
     const createStars = () => {
@@ -64,8 +63,8 @@ export default function StarryBackground() {
         const radius = Math.random() * 1.8 + 0.3
         const depth = radius / 2.1
         return {
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
+          x: Math.random() * screenW,
+          y: Math.random() * screenH,
           radius,
           baseOpacity: Math.random() * 0.5 + 0.3,
           twinkleSpeed: Math.random() * 0.002 + 0.0005,
@@ -80,46 +79,103 @@ export default function StarryBackground() {
     }
 
     const scheduleShootingStar = () => {
-      const delay = Math.random() * 8000 + 4000
+      const delay = Math.random() * 8000 + 3000
       setTimeout(() => {
         shootingStars.push({
-          x: Math.random() * canvas.width * 0.7,
-          y: Math.random() * canvas.height * 0.4,
+          x: Math.random() * screenW * 0.7,
+          y: Math.random() * screenH * 0.4,
           speed: Math.random() * 4 + 3,
           angle: Math.PI / 4 + Math.random() * Math.PI * 0.3,
           length: Math.random() * 80 + 60,
           opacity: Math.random() * 0.5 + 0.5,
+          delay: 0,
         })
         scheduleShootingStar()
       }, delay)
     }
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
-      const dx = mouseX - lastMouseX
-      const dy = mouseY - lastMouseY
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      const now = performance.now()
-      if (dist > 4 && now - lastRippleTime > RIPPLE_INTERVAL && ripples.length < 20) {
-        lastRippleTime = now
-        lastMouseX = mouseX
-        lastMouseY = mouseY
-        ripples.push({ x: mouseX, y: mouseY, birth: now })
+    const addDrop = (col: number, row: number) => {
+      const cx = Math.round(col)
+      const cy = Math.round(row)
+      const radius = 6
+      for (let dy = -radius; dy <= radius; dy++) {
+        for (let dx = -radius; dx <= radius; dx++) {
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist > radius) continue
+          const c = cx + dx
+          const r = cy + dy
+          if (c < 1 || c >= COLS - 1 || r < 1 || r >= ROWS - 1) continue
+          const idx = r * COLS + c
+          const val = Math.cos((dist / radius) * (Math.PI / 2))
+          height1[idx] += val * 0.8
+        }
       }
+    }
+
+    const stepWaves = () => {
+      for (let r = 1; r < ROWS - 1; r++) {
+        for (let c = 1; c < COLS - 1; c++) {
+          const idx = r * COLS + c
+          const cur = height1[idx]
+          const sum =
+            height1[(r - 1) * COLS + c] +
+            height1[(r + 1) * COLS + c] +
+            height1[r * COLS + (c - 1)] +
+            height1[r * COLS + (c + 1)]
+          const next = (sum / 2 - height2[idx]) * 0.985
+          height2[idx] = cur
+          height1[idx] = next
+        }
+      }
+    }
+
+    const getHeight = (x: number, y: number) => {
+      const c = Math.floor(x / cellW)
+      const r = Math.floor(y / cellH)
+      if (c < 1 || c >= COLS - 1 || r < 1 || r >= ROWS - 1) return 0
+      return height1[r * COLS + c]
+    }
+
+    const getGradient = (x: number, y: number) => {
+      const c = Math.floor(x / cellW)
+      const r = Math.floor(y / cellH)
+      if (c < 2 || c >= COLS - 2 || r < 2 || r >= ROWS - 2) return { gx: 0, gy: 0 }
+      const idx = r * COLS + c
+      return {
+        gx: (height1[idx + 1] - height1[idx - 1]),
+        gy: (height1[(r + 1) * COLS + c] - height1[(r - 1) * COLS + c]),
+      }
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseCol = e.clientX / cellW
+      mouseRow = e.clientY / cellH
+      addDrop(mouseCol, mouseRow)
     }
 
     const draw = (time: number) => {
       ctx.fillStyle = "#0d1117"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillRect(0, 0, screenW, screenH)
+
+      stepWaves()
 
       for (const star of stars) {
         const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset)
-        const opacity = star.baseOpacity * (0.5 + twinkle * 0.5)
+        let opacity = star.baseOpacity * (0.5 + twinkle * 0.5)
+
         const driftX = Math.sin(time * star.driftXSpeed + star.driftXOffset) * star.driftAmplitude
         const driftY = Math.sin(time * star.driftYSpeed + star.driftYOffset) * star.driftAmplitude * 0.3
-        const sx = star.x + driftX
-        const sy = star.y + driftY
+
+        let sx = star.x + driftX
+        let sy = star.y + driftY
+
+        const h = getHeight(sx, sy)
+        const grad = getGradient(sx, sy)
+        const displace = h * 12
+        sx += grad.gx * displace
+        sy += grad.gy * displace
+        opacity += h * 0.3
+
         const glow = star.radius > 1.2
         if (glow) {
           ctx.beginPath()
@@ -127,9 +183,10 @@ export default function StarryBackground() {
           ctx.fillStyle = `rgba(200, 230, 220, ${opacity * 0.08})`
           ctx.fill()
         }
+
         ctx.beginPath()
         ctx.arc(sx, sy, star.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 252, 240, ${opacity})`
+        ctx.fillStyle = `rgba(255, 252, 240, ${Math.max(0, opacity)})`
         if (glow) {
           ctx.shadowBlur = 6
           ctx.shadowColor = `rgba(200, 230, 220, ${opacity * 0.6})`
@@ -142,54 +199,25 @@ export default function StarryBackground() {
         const s = shootingStars[i]
         s.x += Math.cos(s.angle) * s.speed
         s.y += Math.sin(s.angle) * s.speed
+
         const tailX = s.x - Math.cos(s.angle) * s.length
         const tailY = s.y - Math.sin(s.angle) * s.length
+
         const gradient = ctx.createLinearGradient(tailX, tailY, s.x, s.y)
         gradient.addColorStop(0, `rgba(255, 255, 255, 0)`)
         gradient.addColorStop(0.6, `rgba(255, 255, 255, ${s.opacity * 0.3})`)
         gradient.addColorStop(1, `rgba(255, 255, 255, ${s.opacity})`)
+
         ctx.beginPath()
         ctx.moveTo(tailX, tailY)
         ctx.lineTo(s.x, s.y)
         ctx.strokeStyle = gradient
         ctx.lineWidth = 1.5
         ctx.stroke()
-        if (s.x > canvas.width + 200 || s.y > canvas.height + 200) {
+
+        if (s.x > screenW + 100 || s.y > screenH + 100 || s.x < -200 || s.y < -200) {
           shootingStars.splice(i, 1)
         }
-      }
-
-      const now = performance.now()
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        const r = ripples[i]
-        const age = now - r.birth
-        if (age > RIPPLE_LIFETIME) {
-          ripples.splice(i, 1)
-          continue
-        }
-        const t = age / RIPPLE_LIFETIME
-        const eased = 1 - Math.pow(1 - t, 2)
-        const radius = eased * RIPPLE_MAX_RADIUS
-        const opacity = t < 0.15
-          ? (t / 0.15) * 0.35
-          : (1 - (t - 0.15) / 0.85) * 0.35
-        ctx.beginPath()
-        ctx.arc(r.x, r.y, radius, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(180, 220, 210, ${opacity})`
-        ctx.lineWidth = 1.2
-        ctx.stroke()
-      }
-
-      if (mouseX > 0 && mouseY > 0) {
-        const pulse = Math.sin(time * 0.003) * 0.5 + 0.5
-        const haloGradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 40 + pulse * 10)
-        haloGradient.addColorStop(0, `rgba(180, 220, 210, ${0.06 + pulse * 0.04})`)
-        haloGradient.addColorStop(0.5, `rgba(180, 220, 210, ${0.02 + pulse * 0.02})`)
-        haloGradient.addColorStop(1, `rgba(180, 220, 210, 0)`)
-        ctx.beginPath()
-        ctx.arc(mouseX, mouseY, 40 + pulse * 10, 0, Math.PI * 2)
-        ctx.fillStyle = haloGradient
-        ctx.fill()
       }
 
       animationId = requestAnimationFrame(draw)
