@@ -26,6 +26,13 @@ interface ShootingStar {
   delay: number
 }
 
+interface Ripple {
+  x: number
+  y: number
+  birth: number
+  lifetime: number
+}
+
 export default function StarryBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -38,6 +45,10 @@ export default function StarryBackground() {
     let animationId: number
     let stars: Star[] = []
     const shootingStars: ShootingStar[] = []
+    const ripples: Ripple[] = []
+    let lastRippleTime = 0
+    let mouseX = -1000
+    let mouseY = -1000
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -78,6 +89,16 @@ export default function StarryBackground() {
         })
         scheduleShootingStar()
       }, delay)
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX
+      mouseY = e.clientY
+      const now = performance.now()
+      if (now - lastRippleTime > 100 && ripples.length < 10) {
+        lastRippleTime = now
+        ripples.push({ x: mouseX, y: mouseY, birth: now, lifetime: 3000 })
+      }
     }
 
     const draw = (time: number) => {
@@ -138,6 +159,32 @@ export default function StarryBackground() {
         }
       }
 
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const r = ripples[i]
+        const age = time - r.birth
+        if (age > r.lifetime) { ripples.splice(i, 1); continue }
+
+        const progress = Math.max(0, age / r.lifetime)
+        const radius = progress * 200
+        const opacity = (1 - progress) * 0.15
+
+        ctx.beginPath()
+        ctx.arc(r.x, r.y, radius, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(200, 230, 220, ${opacity})`
+        ctx.lineWidth = 1
+        ctx.stroke()
+
+        const gradient = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, radius)
+        gradient.addColorStop(0, `rgba(200, 230, 220, ${opacity * 0.15})`)
+        gradient.addColorStop(0.4, `rgba(200, 230, 220, ${opacity * 0.05})`)
+        gradient.addColorStop(0.7, `rgba(200, 230, 220, ${opacity * 0.2})`)
+        gradient.addColorStop(1, `rgba(200, 230, 220, 0)`)
+        ctx.beginPath()
+        ctx.arc(r.x, r.y, radius, 0, Math.PI * 2)
+        ctx.fillStyle = gradient
+        ctx.fill()
+      }
+
       animationId = requestAnimationFrame(draw)
     }
 
@@ -147,10 +194,12 @@ export default function StarryBackground() {
     animationId = requestAnimationFrame(draw)
 
     window.addEventListener("resize", () => { resize(); createStars() })
+    window.addEventListener("mousemove", handleMouseMove)
 
     return () => {
       cancelAnimationFrame(animationId)
       window.removeEventListener("resize", resize)
+      window.removeEventListener("mousemove", handleMouseMove)
     }
   }, [])
 
