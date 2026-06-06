@@ -161,7 +161,6 @@ export default function StarryBackground() {
   return (
     <canvas
       ref={canvasRef}
-      id="stars-canvas"
       className="fixed inset-0 pointer-events-none -z-10"
       aria-hidden="true"
     />

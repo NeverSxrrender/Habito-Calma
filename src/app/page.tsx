@@ -13,11 +13,54 @@ import type { Habit, HabitCategory } from "@/types/habit"
 const habits = habitsData as Habit[]
 const allCategories = categories as HabitCategory[]
 
-const categoryIcons: Record<string, string> = {
-  "ejercicio-fisico": "🏃",
-  "sueno-descanso": "🌙",
-  "alimentacion-basica": "🥗",
-  "bienestar-mental": "🧠",
+// Category specific icon and color maps
+const categoryMetaData: Record<string, {
+  bgClass: string
+  textClass: string
+  icon: React.ReactNode
+}> = {
+  "ejercicio-fisico": {
+    bgClass: "bg-[#EAF2E8] dark:bg-[#1D2E23]",
+    textClass: "text-[#3C7C4B] dark:text-[#6FBE82]",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 8a3 3 0 1 0-3-3" />
+        <path d="M14 9.5a2 2 0 1 1-4 0v-3a2 2 0 1 1 4 0Z" />
+        <path d="M12 20a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
+        <path d="m14 14-2-2.5L9.5 14" />
+      </svg>
+    )
+  },
+  "sueno-descanso": {
+    bgClass: "bg-[#ECEAF5] dark:bg-[#201B2E]",
+    textClass: "text-[#6E53B0] dark:text-[#9F8BE2]",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        <path d="M19 3v4M21 5h-4" />
+      </svg>
+    )
+  },
+  "alimentacion-basica": {
+    bgClass: "bg-[#FDF2E2] dark:bg-[#302619]",
+    textClass: "text-[#B25E00] dark:text-[#E2983B]",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+    )
+  },
+  "bienestar-mental": {
+    bgClass: "bg-[#E4EEF8] dark:bg-[#1A2835]",
+    textClass: "text-[#3578A7] dark:text-[#67A6D2]",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
+        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
+      </svg>
+    )
+  }
 }
 
 const LEAVES = [
@@ -34,6 +77,11 @@ const LEAVES = [
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null)
   const [selectedCategory, setSelectedCategory] = useState<HabitCategory | null>(null)
+  
+  // Filtering states for habits
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [selectedFilterCategory, setSelectedFilterCategory] = useState("all")
+  const [filterLabel, setFilterLabel] = useState("Filtrar por categoría")
   const [hovered, setHovered] = useState(false)
 
   useEffect(() => {
@@ -44,7 +92,22 @@ export default function HomePage() {
     }
   }, [])
 
-  const featuredHabits = habits.filter((h) => h.featured).slice(0, 8)
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (!(e.target as Element).closest(".filter-container")) {
+        setFilterOpen(false)
+      }
+    }
+    document.addEventListener("click", handleOutsideClick)
+    return () => document.removeEventListener("click", handleOutsideClick)
+  }, [])
+
+  // Filter habits list
+  const filteredHabits = useMemo(() => {
+    if (selectedFilterCategory === "all") return habits
+    return habits.filter(h => h.categoryId === selectedFilterCategory)
+  }, [selectedFilterCategory])
 
   const categoryHabits = useMemo(
     () => (selectedCategory ? habits.filter((h) => h.categoryId === selectedCategory.id) : []),
@@ -54,22 +117,26 @@ export default function HomePage() {
   const openCategory = (cat: HabitCategory) => setSelectedCategory(cat)
   const closeCategory = () => setSelectedCategory(null)
 
+  const handleFilterSelect = (catId: string, label: string) => {
+    setSelectedFilterCategory(catId)
+    setFilterLabel(label)
+    setFilterOpen(false)
+  }
+
   return (
     <>
       <Header />
-      <main>
-        <section
-          ref={heroRef}
-          className="min-h-[80dvh] flex flex-col items-center justify-center text-center px-4 py-20 opacity-0 translate-y-8 transition-all duration-[800ms] ease-out"
-        >
-            <div className="max-w-2xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-light/20 text-primary-dark text-xs font-medium mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft" aria-hidden="true" />
-                Bienestar basado en ciencia
-              </div>
-
+      <main className="bg-background min-h-screen">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+          
+          {/* HERO */}
+          <section
+            ref={heroRef}
+            className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 items-center bg-surface border border-muted/30 rounded-[32px] p-8 lg:p-12 shadow-sm transition-all duration-[800ms] ease-out opacity-0 translate-y-8"
+          >
+            <div className="space-y-8">
               <div
-                className="relative overflow-hidden rounded-3xl"
+                className="relative rounded-3xl"
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
               >
@@ -92,10 +159,9 @@ export default function HomePage() {
                     />
                   ))}
                 </div>
-
-                <div className="relative min-h-[180px]">
+                <div className="relative min-h-[120px]">
                   <div className={`transition-all duration-[2500ms] ease-out will-change-transform ${hovered ? "translate-x-28 opacity-0" : ""}`}>
-                    <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
+                    <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground leading-tight tracking-tight mb-4">
                       {"Hábito Calma".split(" ").map((word, i, arr) => (
                         <span
                           key={i}
@@ -106,18 +172,13 @@ export default function HomePage() {
                         </span>
                       ))}
                     </h1>
-
-                    <p className="text-lg sm:text-xl text-text-muted font-light mb-3 max-w-lg mx-auto leading-relaxed">
-                      Una biblioteca de hábitos para vivir con más calma y energía
-                    </p>
-
-                    <p className="text-sm sm:text-base text-text-light max-w-md mx-auto leading-relaxed mb-10">
-                      Hábitos generales con base científica, explicados de forma sencilla. Sin prisa. Sin ruido. Sin datos personales.
+                    <p className="text-text-muted text-base sm:text-lg max-w-lg leading-relaxed">
+                      Una biblioteca de hábitos para vivir con más calma, energía y bienestar.
                     </p>
                   </div>
 
                   <div className={`absolute inset-0 transition-all duration-[2500ms] ease-out will-change-transform ${hovered ? "translate-x-0 opacity-100" : "-translate-x-28 opacity-0"}`}>
-                    <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
+                    <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground leading-tight tracking-tight mb-4">
                       {"Hábito Calma".split(" ").map((word, i, arr) => (
                         <span
                           key={i}
@@ -128,107 +189,187 @@ export default function HomePage() {
                         </span>
                       ))}
                     </h1>
-
-                    <p className="text-lg sm:text-xl text-text-muted font-light mb-3 max-w-lg mx-auto leading-relaxed">
-                      Una biblioteca de hábitos para vivir con más calma y energía
-                    </p>
-
-                    <p className="text-sm sm:text-base text-text-light max-w-md mx-auto leading-relaxed mb-10">
-                      Hábitos generales con base científica, explicados de forma sencilla. Sin prisa. Sin ruido. Sin datos personales.
+                    <p className="text-text-muted text-base sm:text-lg max-w-lg leading-relaxed">
+                      Una biblioteca de hábitos para vivir con más calma, energía y bienestar.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <Link
-                href="/catalogo"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-medium text-sm hover:bg-primary-dark transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+              {/* Three Science Features */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-xs text-foreground">Basado en ciencia</span>
+                  </div>
+                  <p className="text-[11px] text-text-muted leading-relaxed">Hábitos respaldados por estudios y evidencia.</p>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2Z" />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-xs text-foreground">Sin prisa, sin ruido</span>
+                  </div>
+                  <p className="text-[11px] text-text-muted leading-relaxed">Pequeños pasos que crean grandes cambios.</p>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-xs text-foreground">Para tu vida real</span>
+                  </div>
+                  <p className="text-[11px] text-text-muted leading-relaxed">Hábitos realistas que se adaptan a ti.</p>
+                </div>
+              </div>
+
+              <a
+                href="#categorias-seccion"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-dark hover:bg-primary-dark/80 text-white font-semibold text-xs transition-all duration-300 shadow-xs hover:translate-y-[-1px] focus:outline-hidden"
               >
                 Explorar hábitos
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </Link>
+              </a>
             </div>
-        </section>
-
-        <div
-          className={`transition-all duration-[600ms] ease-in-out ${
-            selectedCategory ? "opacity-30 scale-[0.97] pointer-events-none" : "opacity-100 scale-100"
-          }`}
-        >
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="categorias">
-            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-3">Categorías</h2>
-            <p className="text-text-muted mb-8 max-w-lg">Explora hábitos organizados por área de bienestar.</p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {allCategories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => openCategory(cat)}
-                  className="group p-6 rounded-2xl bg-surface border border-muted/40 hover:border-primary-light/40 hover:shadow-sm transition-all duration-400 text-left w-full"
-                  aria-label={`Abrir panel: ${cat.name}`}
-                >
-                  <span className="text-3xl block mb-3">{categoryIcons[cat.id] || "📋"}</span>
-                  <h3 className="font-display font-semibold text-foreground mb-1.5">{cat.name}</h3>
-                  <p className="text-xs text-text-muted leading-relaxed">{cat.description}</p>
-                </button>
-              ))}
+            
+            <div className="w-full flex justify-center items-center">
+              <img
+                src="/meditation_hero.png"
+                alt="Ilustración meditación"
+                className="w-full max-w-[280px] h-auto object-contain dark:opacity-90"
+              />
             </div>
           </section>
 
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="flex items-center justify-between mb-8">
+          {/* CATEGORIES */}
+          <section id="categorias-seccion" className="space-y-6">
+            <div>
+              <h2 className="font-display text-2xl font-bold text-foreground">Categorías de hábitos</h2>
+              <p className="text-text-muted text-xs">Explora hábitos organizados por área de bienestar.</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {allCategories.map((cat) => {
+                const meta = categoryMetaData[cat.id] || {
+                  bgClass: "bg-[#EAF2E8] dark:bg-[#1D2E23]",
+                  textClass: "text-[#3C7C4B] dark:text-[#6FBE82]",
+                  icon: "📋"
+                }
+                const count = habits.filter(h => h.categoryId === cat.id).length
+                
+                return (
+                  <div
+                    key={cat.id}
+                    onClick={() => openCategory(cat)}
+                    className="group bg-surface hover:shadow-md border border-muted/30 hover:border-primary-dark/30 rounded-2xl p-6 cursor-pointer flex flex-col transition-all duration-300"
+                  >
+                    <div>
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center p-2.5 mb-4 ${meta.bgClass} ${meta.textClass}`}>
+                        {meta.icon}
+                      </div>
+                      <h3 className="font-display font-semibold text-foreground text-[15px] group-hover:text-primary-dark transition-colors duration-200 mb-1.5">
+                        {cat.name}
+                      </h3>
+                      <p className="text-[11px] text-text-muted leading-relaxed line-clamp-3">
+                        {cat.description}
+                      </p>
+                    </div>
+                    
+                    <span className="inline-block self-start text-[10px] font-semibold px-3 py-1 rounded-full bg-background text-text-muted mt-auto">
+                      {count} {count === 1 ? "hábito" : "hábitos"}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </section>
+
+          {/* ALL HABITS */}
+          <section className="space-y-6">
+            <div className="flex justify-between items-end border-b border-muted/20 pb-4">
               <div>
-                <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-1">
-                  Hábitos destacados
-                </h2>
-                <p className="text-text-muted">Seleccionados para empezar tu camino de calma.</p>
+                <h2 className="font-display text-2xl font-bold text-foreground">Todos los hábitos</h2>
+                <p className="text-text-muted text-xs">Explora cada hábito y comienza tu cambio hoy.</p>
               </div>
-              <Link
-                href="/catalogo"
-                className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-primary-dark hover:text-primary transition-colors duration-200"
-              >
-                Ver todos
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+
+              {/* Dynamic Filter Dropdown */}
+              <div className="filter-container relative">
+                <button
+                  onClick={() => setFilterOpen(!filterOpen)}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-surface hover:bg-background border border-muted/40 rounded-full text-xs font-semibold text-foreground transition-all duration-200"
+                >
+                  {filterLabel}
+                  <svg className={`w-3.5 h-3.5 text-text-muted transition-transform duration-200 ${filterOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {filterOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-surface border border-muted/30 rounded-xl shadow-lg z-30 py-1 overflow-hidden animate-fade-in-up">
+                    <button
+                      onClick={() => handleFilterSelect("all", "Todos")}
+                      className={`w-full text-left px-4 py-2.5 text-xs transition-colors duration-150 ${selectedFilterCategory === "all" ? "bg-primary-light/20 font-semibold text-primary-dark" : "text-foreground hover:bg-background"}`}
+                    >
+                      Todos
+                    </button>
+                    {allCategories.map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => handleFilterSelect(cat.id, cat.name)}
+                        className={`w-full text-left px-4 py-2.5 text-xs transition-colors duration-150 ${selectedFilterCategory === cat.id ? "bg-primary-light/20 font-semibold text-primary-dark" : "text-foreground hover:bg-background"}`}
+                      >
+                        {cat.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {featuredHabits.map((habit) => (
-                <HabitCard key={habit.slug} habit={habit} compact />
+            {/* Grid of habits */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {filteredHabits.map((habit) => (
+                <HabitCard
+                  key={habit.slug}
+                  habit={habit}
+                  onClick={() => {
+                    const cat = allCategories.find((c) => c.id === habit.categoryId)
+                    if (cat) openCategory(cat)
+                  }}
+                />
               ))}
-            </div>
-
-            <div className="mt-8 text-center sm:hidden">
-              <Link
-                href="/catalogo"
-                className="inline-flex items-center gap-1 text-sm font-medium text-primary-dark hover:text-primary transition-colors duration-200"
-              >
-                Ver todos los hábitos
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
           </section>
 
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="rounded-3xl bg-gradient-to-br from-primary-light/20 via-secondary-light/10 to-tertiary-light/20 p-8 sm:p-12 text-center">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-3">
+          {/* CALM SPACE SECTION */}
+          <section className="py-8">
+            <div className="rounded-3xl bg-gradient-to-br from-primary-light/30 via-tertiary-light/20 to-primary-light/10 p-8 sm:p-12 text-center border border-primary-light/20">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3">
                 Espacio de calma
               </h2>
-              <p className="text-text-muted max-w-md mx-auto mb-6">
+              <p className="text-text-muted max-w-md mx-auto mb-6 text-sm">
                 Un lugar para detenerte y respirar. Prácticas guiadas, sonidos relajantes y un temporizador consciente.
               </p>
               <Link
                 href="/espacio-calma"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-secondary text-white font-medium text-sm hover:bg-secondary/80 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-secondary/50"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-dark hover:bg-primary-dark/80 text-white font-semibold text-xs transition-all duration-300 shadow-xs"
               >
                 Entrar al espacio de calma
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
@@ -237,6 +378,7 @@ export default function HomePage() {
         </div>
       </main>
 
+      {/* DRAWER PANEL */}
       {selectedCategory && (
         <CategoryPanel
           category={selectedCategory}

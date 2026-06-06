@@ -1,8 +1,9 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
+import ThemeToggle from "./ThemeToggle"
 
 const navItems = [
   { href: "/", label: "Inicio" },
@@ -20,28 +21,35 @@ export default function Header() {
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegación principal">
         <Link
           href="/"
-          className="font-display text-xl font-semibold text-primary-dark hover:text-primary transition-colors duration-300"
+          className="font-display text-xl font-semibold text-primary-dark hover:text-primary transition-colors duration-300 flex items-center gap-2"
           aria-label="Hábito Calma - Inicio"
         >
+          <svg className="w-5 h-5 text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22c-4.5 0-8-3.5-8-8 0-5 4-9 8-12 4 3 8 7 8 12 0 4.5-3.5 8-8 8Z" />
+            <path d="M12 22V10" />
+            <path d="M8 14s2-1.5 4-1.5 4 1.5 4 1.5" />
+          </svg>
           Hábito Calma
         </Link>
 
-        <button
-          className="sm:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors duration-200"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          aria-expanded={open}
-        >
-          <svg className="w-6 h-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            className="sm:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors duration-200"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+          >
+            <svg className="w-6 h-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              {open ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
 
-        <ul className="hidden sm:flex items-center gap-1" role="list">
+          <ul className="hidden sm:flex items-center gap-1" role="list">
           {navItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href))
             return (
@@ -61,6 +69,7 @@ export default function Header() {
             )
           })}
         </ul>
+        </div>
       </nav>
 
       {open && (
@@ -85,7 +94,7 @@ export default function Header() {
                 </li>
               )
             })}
-          </ul>
+        </ul>
         </div>
       )}
     </header>
