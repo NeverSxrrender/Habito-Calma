@@ -26,20 +26,12 @@
 body {
   background-color: var(--color-background);
   background-image:
-    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(168, 213, 203, 0.15) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(212, 201, 224, 0.12) 0%, transparent 100%);
-  background-size: 200% 200%;
-  background-position: 0% 0%;
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(168, 213, 203, 0.12) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(212, 201, 224, 0.10) 0%, transparent 100%);
   color: var(--color-foreground);
   font-family: var(--font-sans);
   line-height: 1.7;
   font-size: 17px;
-  animation: ambient-drift 45s ease-in-out infinite alternate;
-}
-
-@keyframes ambient-drift {
-  0% { background-position: 0% 0%, 100% 100%; }
-  100% { background-position: 100% 100%, 0% 0%; }
 }
 
 @keyframes leaf-drift-1 {

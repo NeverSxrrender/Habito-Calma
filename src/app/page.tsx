@@ -109,6 +109,8 @@ export default function HomePage() {
     return habits.filter(h => h.categoryId === selectedFilterCategory)
   }, [selectedFilterCategory])
 
+  const displayHabits = useMemo(() => filteredHabits.slice(0, 4), [filteredHabits])
+
   const categoryHabits = useMemo(
     () => (selectedCategory ? habits.filter((h) => h.categoryId === selectedCategory.id) : []),
     [selectedCategory]
@@ -250,6 +252,7 @@ export default function HomePage() {
               <img
                 src="/meditation_hero.png"
                 alt="Ilustración meditación"
+                loading="lazy"
                 className="w-full max-w-[280px] h-auto object-contain dark:opacity-90"
               />
             </div>
@@ -342,7 +345,7 @@ export default function HomePage() {
 
             {/* Grid of habits */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {filteredHabits.map((habit) => (
+              {displayHabits.map((habit) => (
                 <HabitCard
                   key={habit.slug}
                   habit={habit}
@@ -353,6 +356,20 @@ export default function HomePage() {
                 />
               ))}
             </div>
+
+            {filteredHabits.length > 4 && (
+              <div className="flex justify-center pt-2">
+                <a
+                  href="/catalogo"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-surface hover:bg-background border border-muted/40 rounded-full text-xs font-semibold text-foreground transition-all duration-200"
+                >
+                  Ver todos los hábitos
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            )}
           </section>
 
           {/* CALM SPACE SECTION */}
