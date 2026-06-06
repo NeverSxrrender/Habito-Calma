@@ -137,11 +137,7 @@ export default function HomePage() {
             className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 items-center bg-surface border border-muted/30 rounded-[32px] p-8 lg:p-12 shadow-sm transition-all duration-[800ms] ease-out opacity-0 translate-y-8"
           >
             <div className="space-y-8">
-              <div
-                className="relative rounded-3xl"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-              >
+              <div className="relative rounded-3xl">
                 <div className={`absolute inset-0 pointer-events-none overflow-hidden transition-opacity duration-[2500ms] ${hovered ? "opacity-100" : "opacity-0"}`}>
                   {LEAVES.map((leaf, i) => (
                     <div
@@ -162,13 +158,15 @@ export default function HomePage() {
                   ))}
                 </div>
                 <div className="relative min-h-[120px]">
-                  <div className={`transition-all duration-[2500ms] ease-out will-change-transform ${hovered ? "translate-x-28 opacity-0" : ""}`}>
+                  <div className={`transition-all duration-[2500ms] ease-out will-change-transform ${hovered ? "translate-x-28 opacity-0 pointer-events-none" : ""}`}>
                     <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground leading-tight tracking-tight mb-4">
                       {"Hábito Calma".split(" ").map((word, i, arr) => (
                         <span
                           key={i}
                           className="inline-block transition-all duration-[1800ms] ease-out will-change-transform"
                           style={{ transitionDelay: hovered ? `${i * 120}ms` : `${(arr.length - 1 - i) * 120}ms` }}
+                          onMouseEnter={() => setHovered(true)}
+                          onMouseLeave={() => setHovered(false)}
                         >
                           {word}{i < arr.length - 1 ? "\u00A0" : ""}
                         </span>
@@ -179,13 +177,15 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  <div className={`absolute inset-0 transition-all duration-[2500ms] ease-out will-change-transform ${hovered ? "translate-x-0 opacity-100" : "-translate-x-28 opacity-0"}`}>
+                  <div className={`absolute inset-0 transition-all duration-[2500ms] ease-out will-change-transform ${hovered ? "translate-x-0 opacity-100" : "-translate-x-28 opacity-0 pointer-events-none"}`}>
                     <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground leading-tight tracking-tight mb-4">
                       {"Hábito Calma".split(" ").map((word, i, arr) => (
                         <span
                           key={i}
                           className="inline-block transition-all duration-[1800ms] ease-out will-change-transform"
                           style={{ transitionDelay: hovered ? `${(arr.length - 1 - i) * 120}ms` : `${i * 120}ms` }}
+                          onMouseEnter={() => setHovered(true)}
+                          onMouseLeave={() => setHovered(false)}
                         >
                           {word}{i < arr.length - 1 ? "\u00A0" : ""}
                         </span>
