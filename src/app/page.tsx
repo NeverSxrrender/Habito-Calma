@@ -250,7 +250,7 @@ export default function HomePage() {
             
             <div className="w-full flex justify-center items-center">
               <img
-                src="/meditation_hero.png"
+                src="/meditation_hero.jpg"
                 alt="Ilustración meditación"
                 loading="lazy"
                 className="w-full max-w-[280px] h-auto object-contain dark:opacity-90"

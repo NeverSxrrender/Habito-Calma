@@ -52,7 +52,7 @@ const categoryExtraDetails: Record<string, {
     heroTitle: "Duerme bien, recarga tu cerebro",
     heroDesc: "El descanso nocturno de calidad limpia las toxinas acumuladas en el cerebro y consolida la memoria diaria.",
     heroHighlight: "Dormir de 7 a 9 horas seguidas mejora tu enfoque, reduce la fatiga mental y estabiliza tu humor.",
-    heroImage: "/meditation_hero.png",
+    heroImage: "/meditation_hero.jpg",
     benefits: [
       { icon: "🧠", title: "Foco mental", desc: "Consolida tu aprendizaje y memoria." },
       { icon: "🛡️", title: "Estabilidad", desc: "Regula las emociones y reduce el estrés." },
@@ -73,7 +73,7 @@ const categoryExtraDetails: Record<string, {
     heroTitle: "Alimentación real y consciente",
     heroDesc: "Comer bien no se trata de dietas restrictivas, sino de elegir ingredientes densos en nutrientes y comer con calma.",
     heroHighlight: "Una hidratación adecuada y masticar lento previenen la fatiga y mejoran la absorción de energía.",
-    heroImage: "/meditation_hero.png",
+    heroImage: "/meditation_hero.jpg",
     benefits: [
       { icon: "🥗", title: "Digestión óptima", desc: "Reduce la inflamación y pesadez." },
       { icon: "🔋", title: "Energía estable", desc: "Evita los bajones y picos de insulina." },
@@ -95,7 +95,7 @@ const categoryExtraDetails: Record<string, {
     heroTitle: "Calma tu mente del ruido diario",
     heroDesc: "El estrés y la sobreestimulación digital agotan tus recursos cognitivos. Las pausas de presencia devuelven el equilibrio.",
     heroHighlight: "Con solo unos minutos de respiración pausada regulas el ritmo cardíaco y calmas la rumiación.",
-    heroImage: "/meditation_hero.png",
+    heroImage: "/meditation_hero.jpg",
     benefits: [
       { icon: "🧘", title: "Menos estrés", desc: "Baja los niveles de cortisol activamente." },
       { icon: "🎯", title: "Foco claro", desc: "Reduce la fatiga por multitarea." },
@@ -153,7 +153,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
     heroTitle: `Hábitos de ${category.name}`,
     heroDesc: category.description,
     heroHighlight: "",
-    heroImage: "/meditation_hero.png",
+    heroImage: "/meditation_hero.jpg",
     benefits: [],
     steps: [],
     emojis: {}
