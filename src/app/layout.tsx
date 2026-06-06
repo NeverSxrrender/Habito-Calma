@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
 import { Inter, Quicksand } from "next/font/google"
+import { cookies } from "next/headers"
 import "./globals.css"
 import BackgroundLayer from "@/components/BackgroundLayer"
+import { ThemeProvider } from "@/lib/ThemeContext"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,14 +43,20 @@ export const viewport = {
   initialScale: 1,
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+  const themeCookie = cookieStore.get("theme")
+  const isDark = themeCookie?.value === "dark"
+
   return (
-    <html lang="es" className={`scroll-smooth ${inter.variable} ${quicksand.variable}`}>
+    <html lang="es" className={`scroll-smooth ${inter.variable} ${quicksand.variable}${isDark ? " dark" : ""}`}>
       <body className="min-h-dvh flex flex-col antialiased">
-        <BackgroundLayer />
-        <div className="relative z-10 flex-1 flex flex-col">
-          {children}
-        </div>
+        <ThemeProvider initialDark={isDark}>
+          <BackgroundLayer />
+          <div className="relative z-10 flex-1 flex flex-col">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,25 +1,9 @@
 "use client"
 
-import { useLayoutEffect, useState } from "react"
+import { useTheme } from "@/lib/ThemeContext"
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(() => {
-    if (typeof document !== "undefined") {
-      return document.documentElement.classList.contains("dark")
-    }
-    return false
-  })
-
-  useLayoutEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"))
-  }, [])
-
-  const toggle = () => {
-    const next = !dark
-    setDark(next)
-    document.documentElement.classList.toggle("dark", next)
-    localStorage.setItem("theme", next ? "dark" : "light")
-  }
+  const { dark, toggle } = useTheme()
 
   return (
     <button

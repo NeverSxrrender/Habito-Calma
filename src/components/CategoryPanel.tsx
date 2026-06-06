@@ -86,7 +86,9 @@ const categoryExtraDetails: Record<string, {
     ],
     emojis: {
       "comer-a-horas-regulares": "🍽️",
-      "reducir-ultraprocesados": "🥦"
+      "reducir-ultraprocesados": "🥦",
+      "comer-sin-pantallas": "🧘",
+      "hidratacion-constante": "💧"
     }
   },
   "bienestar-mental": {
@@ -106,7 +108,9 @@ const categoryExtraDetails: Record<string, {
     ],
     emojis: {
       "respiracion-consciente-diaria": "💨",
-      "pausa-digital-diaria": "📵"
+      "pausa-digital-diaria": "📵",
+      "diario-de-gratitud": "📓",
+      "vaciado-mental-antes-de-dormir": "🧹"
     }
   }
 }

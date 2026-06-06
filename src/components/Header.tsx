@@ -24,10 +24,12 @@ export default function Header() {
           className="font-display text-xl font-semibold text-primary-dark hover:text-primary transition-colors duration-300 flex items-center gap-2"
           aria-label="Hábito Calma - Inicio"
         >
-          <svg className="w-5 h-5 text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22c-4.5 0-8-3.5-8-8 0-5 4-9 8-12 4 3 8 7 8 12 0 4.5-3.5 8-8 8Z" />
-            <path d="M12 22V10" />
-            <path d="M8 14s2-1.5 4-1.5 4 1.5 4 1.5" />
+          <svg className="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="currentColor">
+            <g transform="rotate(14 12 12)">
+              <path d="M12 2C7 2 3 6.5 3 11.5c0 3.5 2 6.5 5 8.5.8.6 2 .6 3 0 3-2 5-5 5-8.5C16 6.5 17 2 12 2Z" />
+              <path d="M12 20v2.5" stroke="var(--color-background)" strokeWidth={1.5} fill="none" strokeLinecap="round" />
+              <path d="M12 2v18" stroke="var(--color-background)" strokeWidth={1.5} fill="none" strokeLinecap="round" />
+            </g>
           </svg>
           Hábito Calma
         </Link>

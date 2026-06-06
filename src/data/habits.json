@@ -278,5 +278,117 @@
     "mindfulnessSlug": "mindfulness-basico",
     "mindfulnessName": "Mindfulness básico",
     "featured": true
+  },
+  {
+    "slug": "diario-de-gratitud",
+    "name": "Diario de gratitud (escribir 3 cosas)",
+    "categoryId": "bienestar-mental",
+    "difficulty": "bajo",
+    "estimatedTime": "5 min/día",
+    "summary": "Escribir tres cosas por las que estás agradecido cada día entrena al cerebro para enfocarse en lo positivo.",
+    "description": "El diario de gratitud consiste en escribir cada día tres cosas —grandes o pequeñas— por las que te sientes agradecido. Pueden ser experiencias, personas, sensaciones o situaciones cotidianas. Esta práctica simple pero profunda reorienta la atención hacia lo que funciona en lugar de lo que falta, cultivando una mentalidad de abundancia y bienestar.",
+    "scientificExplanation": "La práctica regular de gratitud activa la corteza prefrontal medial y el cíngulo anterior, regiones cerebrales asociadas con la regulación emocional, la empatía y la toma de perspectiva. Con el tiempo, esta activación repetida fortalece las conexiones neuronales que facilitan el sesgo atencional positivo: el cerebro aprende a detectar y procesar información positiva de forma más eficiente. A nivel neuroquímico, la gratitud aumenta la dopamina y la serotonina, neurotransmisores clave para la sensación de bienestar y satisfacción. Estudios controlados han demostrado que llevar un diario de gratitud durante 2–4 semanas reduce significativamente los niveles de cortisol salival (marcador de estrés), mejora la calidad del sueño y aumenta la sensación subjetiva de felicidad en escalas validadas.",
+    "precautions": "Si estás pasando por un período de depresión clínica o ansiedad severa, la práctica de gratitud puede sentirse forzada o incluso frustrante. En ese caso, comienza con algo muy simple como \"estoy agradecido de haber respirado hoy\" y no te juzgues si algunos días no encuentras nada que escribir. Consulta con un profesional de salud mental si la dificultad persiste.",
+    "howToStart": [
+      "Elige un momento fijo del día: por la mañana al despertar o por la noche antes de dormir. La consistencia ayuda a formar el hábito.",
+      "Consigue un cuaderno pequeño o usa una aplicación de notas simple. Lo importante es que sea accesible y sin fricción para escribir.",
+      "Escribe 3 cosas concretas por las que estás agradecido hoy. Pueden ser muy simples: \"el café caliente esta mañana\", \"una sonrisa de un compañero\", \"el sol al mediodía\".",
+      "Si tienes poco tiempo, incluso una sola cosa es suficiente. Lo importante es la calidad de la atención que pones al recordarla.",
+      "Lee lo que escribiste la semana anterior cada domingo. Notarás patrones y recordarás momentos que de otro modo se habrían perdido."
+    ],
+    "commonMistakes": [
+      "Escribir siempre las mismas cosas sin prestar atención; la práctica requiere frescura y presencia, no repetición mecánica.",
+      "Forzar la gratitud por cosas que no sientes realmente; es mejor escribir algo pequeño y genuino que algo grande pero vacío.",
+      "Saltarse el diario los días malos, que son precisamente cuando más beneficioso puede ser encontrar un motivo de gratitud.",
+      "Comparar tu lista con la de otros; la gratitud es personal y no competitiva.",
+      "Abandonar porque \"no funciona\" tras unos días; los beneficios emocionales son acumulativos y a menudo tardan semanas en notarse."
+    ],
+    "mindfulnessSlug": "mindfulness-basico",
+    "mindfulnessName": "Mindfulness básico",
+    "featured": false
+  },
+  {
+    "slug": "vaciado-mental-antes-de-dormir",
+    "name": "Vaciado mental antes de dormir",
+    "categoryId": "bienestar-mental",
+    "difficulty": "bajo",
+    "estimatedTime": "5 min/día (antes de dormir)",
+    "summary": "Escribir los pendientes y preocupaciones antes de acostarte libera la mente y facilita un sueño más tranquilo.",
+    "description": "El vaciado mental consiste en escribir todo lo que tienes en la cabeza —tareas pendientes, preocupaciones, ideas, recuerdos— justo antes de dormir. Al sacar esos pensamientos del cerebro y ponerlos en papel, le das a tu mente la señal de que puede soltarlos, reduciendo la rumiación nocturna y facilitando la transición al sueño.",
+    "scientificExplanation": "La rumiación nocturna —pensar repetidamente en problemas, tareas o preocupaciones— mantiene activada la corteza prefrontal y la amígdala, impidiendo que el sistema nervioso entre en modo parasimpático. El acto de escribir externaliza la carga cognitiva: el cerebro deja de intentar retener esa información porque sabe que está almacenada externamente. Este fenómeno, conocido como \"desactivación por descarga\" o \"cognitive offloading\", reduce la actividad de la red de modo por defecto (DMN) durante la noche, facilitando el inicio del sueño y aumentando la proporción de sueño profundo (N3). Además, estructurar los pensamientos por escrito activa la corteza prefrontal dorsolateral, mejorando la organización mental y reduciendo la percepción de sobrecarga cognitiva. La práctica regular disminuye los niveles de cortisol vespertino y mejora la calidad subjetiva del sueño en escalas clínicas.",
+    "precautions": "Si tienes ansiedad generalizada o trastorno obsesivo-compulsivo, el vaciado mental puede convertirse en una compulsión si sientes que \"debes\" hacerlo de forma perfecta. Establece un límite de 5 minutos y una vez escrito, cierra el cuaderno sin releer. Consulta con un profesional si la práctica genera más ansiedad en lugar de aliviarla.",
+    "howToStart": [
+      "Ten un cuaderno y bolígrafo exclusivos para este hábito junto a la cama. No uses el teléfono para escribir; la luz azul interfiere con el sueño.",
+      "5 minutos antes de apagar la luz, abre el cuaderno y escribe todo lo que esté en tu mente sin filtrar: tareas, preocupaciones, ideas, recuerdos del día.",
+      "No te preocupes por el orden, la gramática o la legibilidad. El objetivo es sacar los pensamientos de la cabeza, no crear un documento estructurado.",
+      "Cuando sientas que has vaciado la mente, cierra el cuaderno y di mentalmente: \"Ya está fuera. Puedo descansar.\"",
+      "Si un pensamiento importante vuelve durante la noche, recuerda que está escrito y puedes retomarlo por la mañana. No enciendas la luz ni escribas."
+    ],
+    "commonMistakes": [
+      "Usar el teléfono para escribir, exponiéndote a luz azul que suprime la melatonina y retrasa el sueño.",
+      "Escribir con demasiada estructura o perfeccionismo; el vaciado debe ser libre y sin juicio.",
+      "Releer lo escrito antes de dormir, lo que reactiva los pensamientos que acabas de externalizar.",
+      "Hacer el vaciado justo después de una discusión o evento muy estresante; date unos minutos de respiración primero.",
+      "Esperar resultados inmediatos; las primeras noches puede no notarse cambio, pero con consistencia la mente aprende a soltar."
+    ],
+    "mindfulnessSlug": "respiracion-guiada",
+    "mindfulnessName": "Respiración guiada",
+    "featured": false
+  },
+  {
+    "slug": "comer-sin-pantallas",
+    "name": "Comer sin pantallas ni distracciones (Mindful eating)",
+    "categoryId": "alimentacion-basica",
+    "difficulty": "medio",
+    "estimatedTime": "20–30 min/comida principal",
+    "summary": "Comer sin pantallas te permite reconectar con las señales de hambre y saciedad, mejorar la digestión y reducir la ansiedad.",
+    "description": "El mindful eating consiste en prestar atención plena a la experiencia de comer: el sabor, la textura, el aroma y las sensaciones corporales de hambre y saciedad. Comer sin pantallas —sin teléfono, televisión, ordenador— elimina las distracciones que impiden al cerebro registrar correctamente la ingesta, ayudando a regular la cantidad de comida y mejorar la digestión.",
+    "scientificExplanation": "Comer con distracciones divide la atención del sistema nervioso, impidiendo que el cerebro procese adecuadamente las señales de saciedad que el estómago envía a través del nervio vago y la liberación de hormonas como la colecistoquinina (CCK), el GLP-1 y el péptido YY. Sin estas señales integradas, es fácil comer en exceso porque el cerebro no registra cuándo el cuerpo ha recibido suficiente comida. Además, la distracción activa el sistema nervioso simpático (respuesta de estrés), que inhibe la digestión al reducir el flujo sanguíneo al tracto gastrointestinal y disminuir la producción de enzimas digestivas y ácido estomacal. Comer conscientemente, sin pantallas, permite que el sistema parasimpático domine, optimizando la motilidad intestinal, la absorción de nutrientes y la señalización de saciedad. Incluso el tiempo dedicado a la comida importa: las comidas de menos de 20 minutos se asocian con mayor ingesta calórica porque la señal de saciedad tarda entre 15 y 20 minutos en alcanzar el cerebro.",
+    "precautions": "Si tienes un trastorno de la conducta alimentaria (anorexia, bulimia, trastorno por atracón), practicar mindful eating debe hacerse bajo la supervisión de un profesional de la salud mental especializado, ya que la atención plena a la comida puede ser disonante o desencadenante en ciertas fases del trastorno.",
+    "howToStart": [
+      "Elige una comida al día —preferiblemente la que puedas hacer sin prisa— para practicar sin pantallas. Las otras comidas pueden seguir tu rutina normal al principio.",
+      "Antes de empezar a comer, respira tres veces profundamente. Observa el color, el aroma y la disposición de la comida en el plato.",
+      "Come sin teléfono, televisión, ordenador, libro o podcast. Solo tú y la comida. Si comes acompañado, conversa, pero sin pantallas de fondo.",
+      "Mastica cada bocado entre 15 y 20 veces, dejando el tenedor entre bocado y bocado. Nota cómo cambia la textura y el sabor al masticar.",
+      "A mitad de la comida, haz una pausa de 30 segundos. Pregúntate: ¿qué nivel de hambre tengo ahora? (1 = hambriento, 10 = lleno incómodo). Sigue comiendo solo si tienes hambre real."
+    ],
+    "commonMistakes": [
+      "Intentar eliminar todas las distracciones de golpe en todas las comidas; empieza con una comida al día y sé constante.",
+      "Usar la comida como descanso para mirar el teléfono, perdiendo la oportunidad de reconectar con las señales corporales.",
+      "Comer demasiado rápido incluso sin pantallas; la velocidad importa tanto como la atención.",
+      "Sentirse culpable si un día no puedes practicar mindful eating; la flexibilidad es parte de una relación saludable con la comida.",
+      "Confundir mindful eating con dieta restrictiva; el objetivo es la atención plena, no la restricción calórica."
+    ],
+    "mindfulnessSlug": "mindfulness-basico",
+    "mindfulnessName": "Mindfulness básico",
+    "featured": false
+  },
+  {
+    "slug": "hidratacion-constante",
+    "name": "Hidratación constante (beber agua al despertar y durante el día)",
+    "categoryId": "alimentacion-basica",
+    "difficulty": "bajo",
+    "estimatedTime": "Repartido en el día (aprox. 1.5 a 2 litros diarios)",
+    "summary": "Beber agua de forma constante a lo largo del día mantiene la hidratación celular, la energía mental y el metabolismo activo.",
+    "description": "La hidratación es uno de los hábitos más simples y más infravalorados. El cuerpo humano está compuesto por aproximadamente un 60% de agua, y cada sistema —desde el cardiovascular hasta el neurológico— depende de un equilibrio hídrico adecuado. Beber agua al despertar y distribuir el consumo durante el día previene la deshidratación leve, que puede manifestarse como fatiga, falta de concentración o dolor de cabeza sin que lo asociemos al agua.",
+    "scientificExplanation": "El agua es el medio donde ocurren todas las reacciones bioquímicas del organismo. Una pérdida de apenas el 1–2% del agua corporal total —deshidratación leve— provoca una disminución del volumen plasmático, lo que obliga al corazón a trabajar más para mantener la presión arterial y el flujo sanguíneo cerebral. El cerebro es particularmente sensible a la deshidratación: incluso una pérdida del 1% se asocia con reducción del rendimiento cognitivo, empeoramiento del estado de ánimo y aumento de la percepción del esfuerzo en tareas mentales. A nivel metabólico, la hidratación adecuada mantiene la termorregulación (el sudor enfría el cuerpo durante la actividad), facilita el transporte de nutrientes y oxígeno a las células, y permite que los riñones filtren y eliminen toxinas de forma eficiente. Beber agua al despertar es especialmente importante porque durante el sueño el cuerpo pierde agua por la respiración y la sudoración, y despertarse en estado de deshidratación leve es fisiológicamente normal.",
+    "precautions": "La necesidad de agua varía según el clima, la actividad física, la edad y condiciones de salud. Las personas con insuficiencia cardíaca, enfermedad renal crónica o que toman diuréticos deben ajustar la ingesta de agua según las recomendaciones de su médico. Beber más de 3–4 litros en poco tiempo puede causar hiponatremia (dilución de sodio en sangre), una condición peligrosa pero poco común.",
+    "howToStart": [
+      "Coloca un vaso de agua en la mesilla de noche y bébelo nada más despertar, antes de cualquier otra cosa. Esto rehidrata el cuerpo tras el ayuno nocturno.",
+      "Lleva siempre contigo una botella reutilizable de 500 ml–1 litro. Tenla visible en tu escritorio, en el coche o en tu bolso como recordatorio visual.",
+      "Establece pequeños rituales de hidratación: un vaso de agua antes de cada café o infusión, uno antes de cada comida, y uno después de ir al baño.",
+      "Usa una aplicación de recordatorio de agua o simplemente alarma cada 1–2 horas para beber un par de sorbos. La consistencia importa más que el volumen.",
+      "Si te cuesta beber agua natural, añade rodajas de limón, pepino, menta o jengibre para darle sabor sin azúcares añadidos."
+    ],
+    "commonMistakes": [
+      "Esperar a tener sed para beber; la sed ya indica deshidratación leve (pérdida del 1–2% de agua corporal).",
+      "Beber grandes cantidades de una sola vez en lugar de repartir el consumo; el exceso de agua se elimina por la orina y no se aprovecha.",
+      "Sustituir el agua por refrescos, zumos envasados o bebidas azucaradas que deshidratan y aportan calorías vacías.",
+      "Olvidar beber agua durante las comidas por miedo a \"diluir los jugos gástricos\"; beber moderadamente durante la comida facilita la digestión.",
+      "Beber muy poca agua en días fríos o sedentarios; la necesidad de hidratación no desaparece solo porque no se sude."
+    ],
+    "mindfulnessSlug": "sonidos-de-naturaleza",
+    "mindfulnessName": "Sonidos de naturaleza",
+    "featured": false
   }
 ]
