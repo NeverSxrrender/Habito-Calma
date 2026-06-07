@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-background: #FAF7F2;
   --color-foreground: #3D3D3D;
@@ -153,13 +155,6 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #F5F0EB;
-    --color-foreground: #3D3D3D;
   }
 }
 
