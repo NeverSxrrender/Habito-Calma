@@ -20,44 +20,52 @@ const categoryMetaData: Record<string, {
   icon: React.ReactNode
 }> = {
   "ejercicio-fisico": {
-    bgClass: "bg-[#EAF2E8] dark:bg-[#1D2E23]",
-    textClass: "text-[#3C7C4B] dark:text-[#6FBE82]",
+    bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
+    textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M18 8a3 3 0 1 0-3-3" />
-        <path d="M14 9.5a2 2 0 1 1-4 0v-3a2 2 0 1 1 4 0Z" />
-        <path d="M12 20a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
-        <path d="m14 14-2-2.5L9.5 14" />
+      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="17" cy="4" r="2" />
+        <path d="M14 8 L11.5 14" />
+        <path d="M14 9.5 L17.5 7.5" />
+        <path d="M12.5 10.5 L9.5 12" />
+        <path d="M11.5 14 L14 18" />
+        <path d="M11.5 14 L8 19" />
       </svg>
     )
   },
   "sueno-descanso": {
-    bgClass: "bg-[#ECEAF5] dark:bg-[#201B2E]",
-    textClass: "text-[#6E53B0] dark:text-[#9F8BE2]",
+    bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
+    textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-        <path d="M19 3v4M21 5h-4" />
+      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 14 A9 9 0 1 1 10 4 A7 7 0 0 0 20 14 Z" />
+        <path d="M17 3.5 L17.4 4.8 L18.7 5.2 L17.4 5.6 L17 6.9 L16.6 5.6 L15.3 5.2 L16.6 4.8 Z" />
       </svg>
     )
   },
   "alimentacion-basica": {
-    bgClass: "bg-[#FDF2E2] dark:bg-[#302619]",
-    textClass: "text-[#B25E00] dark:text-[#E2983B]",
+    bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
+    textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 6v6l4 2" />
+      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 19 C5 12 12 5 19 5 C19 12 12 19 5 19 Z" />
+        <path d="M5 19 L17 7" />
+        <path d="M9 15 L10.5 13.5" />
+        <path d="M13 11 L14.5 9.5" />
       </svg>
     )
   },
   "bienestar-mental": {
-    bgClass: "bg-[#E4EEF8] dark:bg-[#1A2835]",
-    textClass: "text-[#3578A7] dark:text-[#67A6D2]",
+    bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
+    textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
-        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
+      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 3.5 C7 3.5 4.5 6 4.5 9.5 C4.5 12 5 14 6 16 C7 18 7.5 20 8 21.5 L13 21.5 C15 21.5 16.2 20.2 16.2 18.5 L16.2 14 L18 12.2 C18.4 11.8 18.7 11.3 18.7 10.7 L18.7 9.5 C18.7 6 15.5 3.5 12.5 3.5 Z" />
+        <circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none" />
+        <circle cx="13" cy="10" r="0.9" fill="currentColor" stroke="none" />
+        <circle cx="11.75" cy="8.5" r="0.9" fill="currentColor" stroke="none" />
+        <circle cx="11.75" cy="11.5" r="0.9" fill="currentColor" stroke="none" />
+        <path d="M11.75 10 L11.75 10" />
       </svg>
     )
   }
@@ -281,10 +289,10 @@ export default function HomePage() {
                     className="group bg-surface hover:shadow-md border border-muted/30 hover:border-primary-dark/30 rounded-2xl p-6 cursor-pointer flex flex-col transition-all duration-300"
                   >
                     <div>
-                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center p-2.5 mb-4 ${meta.bgClass} ${meta.textClass}`}>
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${meta.bgClass} ${meta.textClass}`}>
                         {meta.icon}
                       </div>
-                      <h3 className="font-display font-semibold text-foreground text-[15px] group-hover:text-primary-dark transition-colors duration-200 mb-1.5">
+                      <h3 className="font-semibold text-foreground text-[15px] group-hover:text-primary-dark transition-colors duration-200 mb-1.5">
                         {cat.name}
                       </h3>
                       <p className="text-[11px] text-text-muted leading-relaxed line-clamp-3">

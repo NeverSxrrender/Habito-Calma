@@ -74,7 +74,7 @@ export default function SobrePage() {
                 },
               ].map((item, i) => (
                 <li key={i} className="bg-surface border border-muted/40 rounded-xl p-5">
-                  <h3 className="font-display font-semibold text-foreground mb-1.5">{item.title}</h3>
+                  <h3 className="font-semibold text-foreground mb-1.5">{item.title}</h3>
                   <p className="text-sm text-text-muted leading-relaxed">{item.desc}</p>
                 </li>
               ))}

@@ -178,7 +178,7 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
               opacity: Math.max(0.2, getOpacity(4) * 1.3),
             }}
           >
-            <span className="text-white font-display text-sm font-medium">
+            <span className="text-white text-sm font-medium">
               {currentPhase.name}
             </span>
           </div>

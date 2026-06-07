@@ -82,7 +82,7 @@ export default function HabitCard({ habit, compact, onClick }: HabitCardProps) {
             <CategoryIcon categoryId={habit.categoryId} className="w-5 h-5" />
           </div>
           <div className="flex flex-col">
-            <h3 className="font-display font-semibold text-foreground text-sm leading-snug group-hover:text-primary-dark transition-colors duration-200">
+            <h3 className="font-semibold text-foreground text-sm leading-snug group-hover:text-primary-dark transition-colors duration-200">
               {habit.name}
             </h3>
             <p className="text-[11px] text-text-light mt-1">{habit.estimatedTime}</p>

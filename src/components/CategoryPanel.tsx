@@ -212,7 +212,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
           {/* Banner Hero Card */}
           <div className="bg-[#F9F6FB] dark:bg-[#1C1C24] border border-primary-dark/8 dark:border-primary-dark/20 rounded-2xl p-9 flex gap-6 items-center">
             <div className="flex-1">
-              <h3 className="font-display font-bold text-foreground text-[18px] leading-snug mb-3">
+              <h3 className="font-bold text-foreground text-[18px] leading-snug mb-3">
                 {extra.heroTitle}
               </h3>
               <p className="text-text-muted text-[14px] leading-relaxed mb-3">
@@ -289,7 +289,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                         {habitEmoji}
                       </div>
                       <div className="min-w-0 flex flex-col gap-1">
-                        <h5 className="font-display font-semibold text-foreground text-[15px] truncate">
+                        <h5 className="font-semibold text-foreground text-[15px] truncate">
                           {habit.name}
                         </h5>
                         <div className="flex items-center gap-2">

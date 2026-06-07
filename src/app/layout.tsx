@@ -1,20 +1,20 @@
 import type { Metadata } from "next"
-import { Inter, Quicksand } from "next/font/google"
+import { Nunito, Plus_Jakarta_Sans } from "next/font/google"
 import { cookies } from "next/headers"
 import "./globals.css"
 import BackgroundLayer from "@/components/BackgroundLayer"
 import { ThemeProvider } from "@/lib/ThemeContext"
 
-const inter = Inter({
+const nunito = Nunito({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-nunito",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
 })
 
-const quicksand = Quicksand({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-quicksand",
+  variable: "--font-jakarta",
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
 })
@@ -49,7 +49,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const isDark = themeCookie?.value === "dark"
 
   return (
-    <html lang="es" className={`scroll-smooth ${inter.variable} ${quicksand.variable}${isDark ? " dark" : ""}`}>
+    <html lang="es" className={`scroll-smooth ${nunito.variable} ${plusJakartaSans.variable}${isDark ? " dark" : ""}`}>
       <body className="min-h-dvh flex flex-col antialiased">
         <ThemeProvider initialDark={isDark}>
           <BackgroundLayer />

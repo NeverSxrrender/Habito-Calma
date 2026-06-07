@@ -6,14 +6,14 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
           <div>
-            <h3 className="font-display font-semibold text-foreground mb-3">Hábito Calma</h3>
+            <h3 className="font-semibold text-foreground mb-3">Hábito Calma</h3>
             <p className="text-text-muted leading-relaxed">
               Una biblioteca de hábitos con base científica para vivir con más calma, claridad y energía.
             </p>
           </div>
 
           <div>
-            <h3 className="font-display font-semibold text-foreground mb-3">Enlaces</h3>
+            <h3 className="font-semibold text-foreground mb-3">Enlaces</h3>
             <ul className="space-y-2" role="list">
               <li>
                 <Link href="/catalogo" className="text-text-muted hover:text-primary-dark transition-colors duration-200">
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display font-semibold text-foreground mb-3">Transparencia</h3>
+            <h3 className="font-semibold text-foreground mb-3">Transparencia</h3>
             <ul className="space-y-2 text-text-muted" role="list">
               <li>No almacenamos datos personales</li>
               <li>Sin cookies de seguimiento</li>

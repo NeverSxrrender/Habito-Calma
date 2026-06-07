@@ -21,14 +21,44 @@ export default function Header() {
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegación principal">
         <Link
           href="/"
-          className="font-display text-xl font-semibold text-primary-dark hover:text-primary transition-colors duration-300 flex items-center gap-2"
+          className="text-xl font-semibold text-primary-dark hover:text-primary transition-colors duration-300 flex items-center gap-2"
           aria-label="Hábito Calma - Inicio"
         >
-          <svg className="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="currentColor">
-            <g transform="rotate(14 12 12)">
-              <path d="M12 2C7 2 3 6.5 3 11.5c0 3.5 2 6.5 5 8.5.8.6 2 .6 3 0 3-2 5-5 5-8.5C16 6.5 17 2 12 2Z" />
-              <path d="M12 20v2.5" stroke="var(--color-background)" strokeWidth={1.5} fill="none" strokeLinecap="round" />
-              <path d="M12 2v18" stroke="var(--color-background)" strokeWidth={1.5} fill="none" strokeLinecap="round" />
+          <svg className="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(-18 12 12)">
+              <path
+                d="M20.5 4 C20.5 12 12 20.5 4 20.5 C4 12.5 12.5 4 20.5 4 Z"
+                fill="#4a9e8a"
+              />
+              <path
+                d="M19 5.5 L5 19.5"
+                stroke="#ffffff"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeOpacity="0.45"
+              />
+              <path
+                d="M15 9 Q13 9.5 11 10.5"
+                stroke="#ffffff"
+                strokeWidth="0.9"
+                strokeLinecap="round"
+                fill="none"
+                strokeOpacity="0.4"
+              />
+              <path
+                d="M11 13 Q9 13.5 7 14.5"
+                stroke="#ffffff"
+                strokeWidth="0.9"
+                strokeLinecap="round"
+                fill="none"
+                strokeOpacity="0.4"
+              />
+              <path
+                d="M4 20.5 L2.5 22"
+                stroke="#4a9e8a"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
             </g>
           </svg>
           Hábito Calma

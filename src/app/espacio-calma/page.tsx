@@ -43,7 +43,7 @@ export default function EspacioCalmaPage() {
                   aria-label="Respiración guiada"
                 >
                   <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">💨</span>
-                  <h3 className="font-display font-semibold text-white/90 mb-1.5">Respiración guiada</h3>
+                  <h3 className="font-semibold text-white/90 mb-1.5">Respiración guiada</h3>
                   <p className="text-xs text-white/60">Sigue el ritmo de la respiración con la animación visual.</p>
                 </button>
 
@@ -53,7 +53,7 @@ export default function EspacioCalmaPage() {
                   aria-label="Mindfulness básico"
                 >
                   <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">🧘</span>
-                  <h3 className="font-display font-semibold text-white/90 mb-1.5">Mindfulness básico</h3>
+                  <h3 className="font-semibold text-white/90 mb-1.5">Mindfulness básico</h3>
                   <p className="text-xs text-white/60">Un momento de atención plena en tu día.</p>
                 </button>
 
@@ -63,13 +63,13 @@ export default function EspacioCalmaPage() {
                   aria-label="Sonidos relajantes"
                 >
                   <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">🎵</span>
-                  <h3 className="font-display font-semibold text-white/90 mb-1.5">Sonidos relajantes</h3>
+                  <h3 className="font-semibold text-white/90 mb-1.5">Sonidos relajantes</h3>
                   <p className="text-xs text-white/60">Elige entre cuencos, lluvia, viento, agua o ruido blanco.</p>
                 </button>
               </div>
 
               <div className="max-w-lg mx-auto bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <h3 className="font-display font-semibold text-white/90 mb-3 text-center">Prácticas de relajación</h3>
+                <h3 className="font-semibold text-white/90 mb-3 text-center">Prácticas de relajación</h3>
                 <SoundPlayer />
               </div>
             </>
