@@ -210,7 +210,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
           </div>
 
           {/* Banner Hero Card */}
-          <div className="bg-[#F2F7F2] dark:bg-[#1A2821] border border-primary-dark/8 dark:border-primary-dark/20 rounded-2xl p-9 flex gap-6 items-center">
+          <div className="bg-[#F9F6FB] dark:bg-[#1C1C24] border border-primary-dark/8 dark:border-primary-dark/20 rounded-2xl p-9 flex gap-6 items-center">
             <div className="flex-1">
               <h3 className="font-display font-bold text-foreground text-[18px] leading-snug mb-3">
                 {extra.heroTitle}
@@ -230,8 +230,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                 alt={category.name}
                 width={160}
                 height={160}
-                className="object-contain"
-                style={{ mixBlendMode: 'multiply' }}
+                className="object-contain mix-blend-multiply dark:mix-blend-normal dark:opacity-90"
               />
             </div>
           </div>
