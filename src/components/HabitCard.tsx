@@ -1,48 +1,21 @@
 "use client"
 
+import { Barbell, Moon, Leaf, Brain } from "@phosphor-icons/react"
 import Link from "next/link"
 import type { Habit } from "@/types/habit"
 
 export function CategoryIcon({ categoryId, className = "w-5 h-5" }: { categoryId: string; className?: string }) {
   switch (categoryId) {
     case "ejercicio-fisico":
-      return (
-        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 18 Q10 14 11 11" />
-          <circle cx="12" cy="8" r="3.5" />
-          <path d="M13.5 5 L17 3" />
-          <circle cx="18.5" cy="3" r="2" />
-        </svg>
-      )
+      return <Barbell className={className} weight="duotone" color="#4a9e8a" />
     case "sueno-descanso":
-      return (
-        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-          <path d="M19 3v4M21 5h-4" />
-        </svg>
-      )
+      return <Moon className={className} weight="duotone" color="#4a9e8a" />
     case "alimentacion-basica":
-      return (
-        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 6v6l4 2" />
-        </svg>
-      )
+      return <Leaf className={className} weight="duotone" color="#4a9e8a" />
     case "bienestar-mental":
-      return (
-        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
-          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
-        </svg>
-      )
+      return <Brain className={className} weight="duotone" color="#4a9e8a" />
     default:
-      return (
-        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="8" x2="12" y2="12" />
-          <line x1="12" y1="16" x2="12.01" y2="16" />
-        </svg>
-      )
+      return <Barbell className={className} weight="duotone" color="#4a9e8a" />
   }
 }
 

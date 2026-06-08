@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useRef, useEffect, useState, useMemo } from "react"
+import { Barbell, Moon, Leaf, Brain } from "@phosphor-icons/react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import HabitCard from "@/components/HabitCard"
@@ -22,50 +23,22 @@ const categoryMetaData: Record<string, {
   "ejercicio-fisico": {
     bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
     textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
-    icon: (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 18 Q10 14 11 11" />
-        <circle cx="12" cy="8" r="3.5" />
-        <path d="M13.5 5 L17 3" />
-        <circle cx="18.5" cy="3" r="2" />
-      </svg>
-    )
+    icon: <Barbell size={28} weight="duotone" color="#4a9e8a" />
   },
   "sueno-descanso": {
     bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
     textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
-    icon: (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 14 A9 9 0 1 1 10 4 A7 7 0 0 0 20 14 Z" />
-        <path d="M17 3.5 L17.4 4.8 L18.7 5.2 L17.4 5.6 L17 6.9 L16.6 5.6 L15.3 5.2 L16.6 4.8 Z" />
-      </svg>
-    )
+    icon: <Moon size={28} weight="duotone" color="#4a9e8a" />
   },
   "alimentacion-basica": {
     bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
     textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
-    icon: (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 19 C5 12 12 5 19 5 C19 12 12 19 5 19 Z" />
-        <path d="M5 19 L17 7" />
-        <path d="M9 15 L10.5 13.5" />
-        <path d="M13 11 L14.5 9.5" />
-      </svg>
-    )
+    icon: <Leaf size={28} weight="duotone" color="#4a9e8a" />
   },
   "bienestar-mental": {
     bgClass: "bg-[#1e3a2f] dark:bg-[#1e3a2f]",
     textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
-    icon: (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 3.5 C7 3.5 4.5 6 4.5 9.5 C4.5 12 5 14 6 16 C7 18 7.5 20 8 21.5 L13 21.5 C15 21.5 16.2 20.2 16.2 18.5 L16.2 14 L18 12.2 C18.4 11.8 18.7 11.3 18.7 10.7 L18.7 9.5 C18.7 6 15.5 3.5 12.5 3.5 Z" />
-        <circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none" />
-        <circle cx="13" cy="10" r="0.9" fill="currentColor" stroke="none" />
-        <circle cx="11.75" cy="8.5" r="0.9" fill="currentColor" stroke="none" />
-        <circle cx="11.75" cy="11.5" r="0.9" fill="currentColor" stroke="none" />
-        <path d="M11.75 10 L11.75 10" />
-      </svg>
-    )
+    icon: <Brain size={28} weight="duotone" color="#4a9e8a" />
   }
 }
 
@@ -287,7 +260,7 @@ export default function HomePage() {
                     className="group bg-surface hover:shadow-md border border-muted/30 hover:border-primary-dark/30 rounded-2xl p-6 cursor-pointer flex flex-col transition-all duration-300"
                   >
                     <div>
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${meta.bgClass} ${meta.textClass}`}>
+                      <div className={`rounded-xl flex items-center justify-center mb-4 p-2.5 ${meta.bgClass} ${meta.textClass}`}>
                         {meta.icon}
                       </div>
                       <h3 className="font-semibold text-foreground text-[15px] group-hover:text-primary-dark transition-colors duration-200 mb-1.5">
@@ -378,26 +351,26 @@ export default function HomePage() {
             )}
           </section>
 
-          {/* CALM SPACE SECTION */}
-          <section className="py-8">
-            <div className="rounded-3xl bg-gradient-to-br from-primary-light/30 via-tertiary-light/20 to-primary-light/10 p-8 sm:p-12 text-center border border-primary-light/20">
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3">
-                Espacio de calma
-              </h2>
-              <p className="text-text-muted max-w-md mx-auto mb-6 text-sm">
-                Un lugar para detenerte y respirar. Prácticas guiadas, sonidos relajantes y un temporizador consciente.
-              </p>
-              <Link
-                href="/espacio-calma"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-dark hover:bg-primary-dark/80 text-white font-semibold text-xs transition-all duration-300 shadow-xs"
-              >
-                Entrar al espacio de calma
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          </section>
+           {/* CALM SPACE SECTION */}
+           <section className="py-8">
+             <div className="rounded-3xl bg-gradient-to-br from-primary-light/30 via-tertiary-light/20 to-primary-light/10 p-8 sm:p-12 text-center border border-primary-light/20 animate-float hover:shadow-[0_16px_48px_rgba(74,158,138,0.3)] transition-all duration-[400ms] ease-in-out hover:scale-[1.03]">
+               <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                 Espacio de calma
+               </h2>
+               <p className="text-text-muted max-w-md mx-auto mb-6 text-sm">
+                 Un lugar para detenerte y respirar. Prácticas guiadas, sonidos relajantes y un temporizador consciente.
+               </p>
+               <Link
+                 href="/espacio-calma"
+                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-dark hover:bg-primary-dark/80 text-white font-semibold text-xs transition-all duration-300 shadow-xs"
+               >
+                 Entrar al espacio de calma
+                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                 </svg>
+               </Link>
+             </div>
+           </section>
         </div>
       </main>
 
