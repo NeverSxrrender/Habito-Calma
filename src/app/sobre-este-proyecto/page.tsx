@@ -105,17 +105,6 @@ export default function SobrePage() {
                   </p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3 p-4 bg-tertiary-light/10 rounded-xl border border-tertiary-light/20">
-                <span className="shrink-0 text-lg mt-0.5">🎮</span>
-                <div>
-                  <p className="font-medium text-foreground text-sm mb-0.5">Control total</p>
-                  <p className="text-sm text-text-muted">
-                    El sonido y las animaciones son opcionales y completamente controlables por el usuario. Nada se
-                    activa automáticamente sin tu consentimiento explícito.
-                  </p>
-                </div>
-              </div>
             </div>
           </section>
 

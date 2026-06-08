@@ -83,6 +83,15 @@ const soundGroups: SoundGroup[] = [
       { id: "pajaros-3", label: "Variante 3", src: "/audio/pajaros/pajaros-3.mp3" },
     ],
   },
+  {
+    id: "otros",
+    name: "Otros sonidos relajantes",
+    icon: "🎵",
+    description: "Sonidos adicionales para variar tu experiencia de calma",
+    variants: [
+      { id: "otros-1", label: "Variante 1", src: "/audio/otros/otros1.mp3" },
+    ],
+  },
 ]
 
 export default function SoundPlayer() {

@@ -24,12 +24,10 @@ const categoryMetaData: Record<string, {
     textClass: "text-[#4a9e8a] dark:text-[#4a9e8a]",
     icon: (
       <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="17" cy="4" r="2" />
-        <path d="M14 8 L11.5 14" />
-        <path d="M14 9.5 L17.5 7.5" />
-        <path d="M12.5 10.5 L9.5 12" />
-        <path d="M11.5 14 L14 18" />
-        <path d="M11.5 14 L8 19" />
+        <path d="M4 18 Q10 14 11 11" />
+        <circle cx="12" cy="8" r="3.5" />
+        <path d="M13.5 5 L17 3" />
+        <circle cx="18.5" cy="3" r="2" />
       </svg>
     )
   },

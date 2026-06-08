@@ -8,10 +8,10 @@ export function CategoryIcon({ categoryId, className = "w-5 h-5" }: { categoryId
     case "ejercicio-fisico":
       return (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 8a3 3 0 1 0-3-3" />
-          <path d="M14 9.5a2 2 0 1 1-4 0v-3a2 2 0 1 1 4 0Z" />
-          <path d="M12 20a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
-          <path d="m14 14-2-2.5L9.5 14" />
+          <path d="M4 18 Q10 14 11 11" />
+          <circle cx="12" cy="8" r="3.5" />
+          <path d="M13.5 5 L17 3" />
+          <circle cx="18.5" cy="3" r="2" />
         </svg>
       )
     case "sueno-descanso":
