@@ -15,13 +15,22 @@ const navItems = [
 export default function Header() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const isEspacioCalma = pathname === "/espacio-calma"
 
   return (
-    <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-muted/50">
+    <header
+      className={`${
+        isEspacioCalma
+          ? "fixed top-0 left-0 right-0 z-50 bg-[rgba(13,17,23,0.7)] backdrop-blur-md"
+          : "sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-muted/50"
+      }`}
+    >
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegación principal">
         <Link
           href="/"
-          className="text-xl font-semibold text-primary-dark hover:text-primary transition-colors duration-300 flex items-center gap-2"
+          className={`text-xl font-semibold transition-colors duration-300 flex items-center gap-2 ${
+            isEspacioCalma ? "text-white/90 hover:text-white" : "text-primary-dark hover:text-primary"
+          }`}
           aria-label="Hábito Calma - Inicio"
         >
           <svg className="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -65,14 +74,16 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-1">
-          <ThemeToggle />
+          {!isEspacioCalma && <ThemeToggle />}
           <button
-            className="sm:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors duration-200"
+            className={`sm:hidden p-2 rounded-lg transition-colors duration-200 ${
+              isEspacioCalma ? "hover:bg-white/10" : "hover:bg-muted/50"
+            }`}
             onClick={() => setOpen(!open)}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
           >
-            <svg className="w-6 h-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className={`w-6 h-6 ${isEspacioCalma ? "text-white" : "text-foreground"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               {open ? (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -90,8 +101,12 @@ export default function Header() {
                   href={item.href}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     isActive
-                      ? "bg-primary-light/30 text-primary-dark"
-                      : "text-text-muted hover:text-foreground hover:bg-muted/50"
+                      ? isEspacioCalma
+                        ? "bg-white/20 text-white"
+                        : "bg-primary-light/30 text-primary-dark"
+                      : isEspacioCalma
+                        ? "text-white/60 hover:text-white hover:bg-white/10"
+                        : "text-text-muted hover:text-foreground hover:bg-muted/50"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -105,7 +120,11 @@ export default function Header() {
       </nav>
 
       {open && (
-        <div className="sm:hidden border-t border-muted/50 bg-background/95 backdrop-blur-sm">
+        <div
+          className={`sm:hidden border-t backdrop-blur-sm ${
+            isEspacioCalma ? "border-white/10 bg-[#0d1117]/95" : "border-muted/50 bg-background/95"
+          }`}
+        >
           <ul className="px-4 py-3 space-y-1" role="list">
             {navItems.map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href))
@@ -116,8 +135,12 @@ export default function Header() {
                     onClick={() => setOpen(false)}
                     className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
                       isActive
-                        ? "bg-primary-light/30 text-primary-dark"
-                        : "text-text-muted hover:text-foreground hover:bg-muted/50"
+                        ? isEspacioCalma
+                          ? "bg-white/20 text-white"
+                          : "bg-primary-light/30 text-primary-dark"
+                        : isEspacioCalma
+                          ? "text-white/60 hover:text-white hover:bg-white/10"
+                          : "text-text-muted hover:text-foreground hover:bg-muted/50"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >

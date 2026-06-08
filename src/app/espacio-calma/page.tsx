@@ -24,7 +24,7 @@ export default function EspacioCalmaPage() {
       <style>{'body { background: #0d1117 !important; }'}</style>
       <Header />
       <main className="relative min-h-screen">
-        <section className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
           {!activePractice ? (
             <>
               <div className="text-center mb-12">
