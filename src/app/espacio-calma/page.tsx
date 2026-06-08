@@ -6,7 +6,7 @@ import Footer from "@/components/Footer"
 import BreathingCircle, { BREATHING_PATTERNS, type BreathingPattern } from "@/components/BreathingCircle"
 import SoundPlayer from "@/components/SoundPlayer"
 
-type Practice = "respiracion" | "mindfulness" | "sonidos"
+type Practice = "respiracion" | "mindfulness"
 
 export default function EspacioCalmaPage() {
   const [activePractice, setActivePractice] = useState<Practice | null>(null)
@@ -36,7 +36,7 @@ export default function EspacioCalmaPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
                 <button
                   onClick={() => setActivePractice("respiracion")}
                   className="group p-6 rounded-2xl bg-white/8 backdrop-blur-sm border border-white/10 hover:border-primary-light/40 hover:shadow-sm transition-all duration-400 text-center"
@@ -57,36 +57,16 @@ export default function EspacioCalmaPage() {
                   <p className="text-xs text-white/60">Un momento de atención plena en tu día.</p>
                 </button>
 
-                <button
-                  onClick={() => setActivePractice("sonidos")}
-                  className="group p-6 rounded-2xl bg-white/8 backdrop-blur-sm border border-white/10 hover:border-tertiary-light/40 hover:shadow-sm transition-all duration-400 text-center"
-                  aria-label="Sonidos relajantes"
-                >
-                  <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">🎵</span>
-                  <h3 className="font-semibold text-white/90 mb-1.5">Sonidos relajantes</h3>
-                  <p className="text-xs text-white/60">Elige entre cuencos, lluvia, viento, agua o ruido blanco.</p>
-                </button>
               </div>
 
-              <div className="max-w-lg mx-auto bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <h3 className="font-semibold text-white/90 mb-3 text-center">Prácticas de relajación</h3>
+              <div className="max-w-2xl mx-auto">
+                <h2 className="text-2xl font-semibold text-white/90 mb-2">Sonidos relajantes</h2>
+                <p className="text-white/60 text-sm mb-6">
+                  Elige un sonido, selecciona tu variante favorita y ajusta el volumen.
+                </p>
                 <SoundPlayer />
               </div>
             </>
-          ) : activePractice === "sonidos" ? (
-            <div className="max-w-lg mx-auto">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="font-display text-2xl font-semibold text-white/90">Sonidos relajantes</h2>
-                <button
-                  onClick={handleExit}
-                  className="text-sm px-3 py-1.5 rounded-full bg-white/10 text-white/60 hover:bg-white/20 transition-colors duration-200"
-                  aria-label="Salir de sonidos"
-                >
-                  Salir
-                </button>
-              </div>
-              <SoundPlayer />
-            </div>
           ) : (
             <div className="max-w-lg mx-auto">
               <div className="flex items-center justify-between mb-6">
@@ -196,20 +176,20 @@ export default function EspacioCalmaPage() {
                   </div>
                 </div>
               </div>
+
+              <div className="mt-8 text-center">
+                <button
+                  onClick={handleExit}
+                  className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white/90 transition-colors duration-200"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Volver
+                </button>
+              </div>
             </div>
           )}
-
-          <div className="mt-8 text-center">
-            <button
-              onClick={handleExit}
-              className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white/90 transition-colors duration-200"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              Volver
-            </button>
-          </div>
         </section>
       </main>
       <Footer />
