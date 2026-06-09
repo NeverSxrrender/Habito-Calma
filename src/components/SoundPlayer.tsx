@@ -94,11 +94,20 @@ const soundGroups: SoundGroup[] = [
   },
 ]
 
+let sharedAudioInstance: HTMLAudioElement | undefined
+
+function getSharedAudio(): HTMLAudioElement {
+  if (!sharedAudioInstance) {
+    sharedAudioInstance = new Audio()
+    sharedAudioInstance.loop = true
+  }
+  return sharedAudioInstance
+}
+
 export default function SoundPlayer() {
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
   const [activeVariant, setActiveVariant] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
   const volumeRef = useRef(volume)
 
   useEffect(() => {
@@ -106,19 +115,16 @@ export default function SoundPlayer() {
   }, [volume])
 
   useEffect(() => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio()
-      audioRef.current.loop = true
-    }
-
-    const audio = audioRef.current
+    const audio = getSharedAudio()
     audio.volume = volumeRef.current
 
     if (activeVariant) {
       for (const group of soundGroups) {
         for (const v of group.variants) {
           if (v.id === activeVariant) {
-            audio.src = v.src
+            if (audio.src !== v.src) {
+              audio.src = v.src
+            }
             audio.play().catch(() => {
               setActiveVariant(null)
             })
@@ -128,18 +134,11 @@ export default function SoundPlayer() {
       }
     } else {
       audio.pause()
-      audio.src = ""
-    }
-
-    return () => {
-      audio.pause()
     }
   }, [activeVariant])
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume
-    }
+    getSharedAudio().volume = volume
   }, [volume])
 
   const handleToggle = (groupId: string) => {
@@ -170,11 +169,11 @@ export default function SoundPlayer() {
         return (
           <div
             key={group.id}
-            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden transition-all duration-700 ease-in-out"
+            className="rounded-2xl border border-white/[0.12] bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-700 ease-in-out"
           >
             <button
               onClick={() => handleToggle(group.id)}
-              className="w-full flex items-center gap-3 p-4 sm:p-5 text-left transition-colors duration-300 hover:bg-white/[0.04]"
+              className="w-full flex items-center gap-3 p-4 sm:p-5 text-left transition-colors duration-300 hover:bg-white/10"
               aria-expanded={isExpanded}
             >
               <span className="text-2xl sm:text-3xl shrink-0">{group.icon}</span>
@@ -212,7 +211,7 @@ export default function SoundPlayer() {
                         className={`px-4 py-2 rounded-lg border text-sm transition-all duration-300 ${
                           isActive
                             ? "border-primary bg-primary/20 text-white shadow-sm"
-                            : "border-white/10 bg-white/[0.04] text-white/70 hover:border-white/30 hover:text-white/90"
+                            : "border-white/[0.12] bg-white/10 text-white/70 hover:border-white/30 hover:text-white/90"
                         }`}
                         aria-label={`${isActive ? "Detener" : "Reproducir"}: ${v.label}`}
                         aria-pressed={isActive}

@@ -364,6 +364,33 @@
     "featured": false
   },
   {
+    "slug": "masajes-terapeuticos",
+    "name": "Masajes terapéuticos (1 sesión/semana o automasaje diario)",
+    "categoryId": "bienestar-mental",
+    "difficulty": "bajo",
+    "estimatedTime": "5–10 min/día (automasaje) o 45–60 min/semana (profesional)",
+    "summary": "El masaje terapéutico —profesional o mediante automasaje— reduce el cortisol, alivia la tensión muscular y mejora el bienestar emocional.",
+    "description": "El masaje terapéutico es una de las prácticas de cuidado corporal más antiguas y con mayor respaldo científico. Ya sea recibido de un profesional en una sesión estructurada o practicado como automasaje en casa, la manipulación deliberada de los tejidos blandos —músculos, tendones, fascias— produce beneficios profundos en el sistema nervioso, circulatorio y musculoesquelético. Una sesión semanal con un terapeuta cualificado permite trabajar zonas difíciles como la espalda profunda o las cervicales, mientras que el automasaje diario de 5–10 minutos mantiene el efecto entre sesiones y te conecta con las señales de tu cuerpo.",
+    "scientificExplanation": "La presión mecánica del masaje activa los mecanorreceptores de la piel (corpúsculos de Pacini y Ruffini), que envían señales al sistema nervioso central para reducir la actividad simpática y aumentar la parasimpática, disminuyendo la frecuencia cardíaca y la presión arterial. El masaje reduce los niveles de cortisol en sangre hasta un 31% (Field, 2014), mientras aumenta la serotonina en un 28% y la dopamina en un 31%, neurotransmisores clave para la regulación del estado de ánimo y la sensación de bienestar. A nivel muscular, la presión sostenida sobre puntos gatillo (trigger points) interrumpe el ciclo de isquemia-contractura-dolor al aumentar el flujo sanguíneo local —la hiperemia reactiva— que aporta oxígeno y nutrientes mientras elimina metabolitos como el ácido láctico y la sustancia P. La activación del nervio vago mediante el masaje cervical y de hombros estimula la respuesta antiinflamatoria colinérgica, reduciendo citoquinas proinflamatorias como IL-6 y TNF-α. Un metaanálisis de 2022 publicado en JAMA Network Open (Crawford et al.) que analizó 120 ensayos clínicos aleatorizados concluyó que la terapia de masaje reduce significativamente la intensidad del dolor (d de Cohen = −0.79), la ansiedad (−0.56) y la fatiga (−0.56) en múltiples poblaciones clínicas, con efectos que se mantienen hasta 12 semanas después de la última sesión. La terapia de masaje también mejora la calidad del sueño al aumentar la proporción de sueño profundo (N3) y REM, y fortalece el sistema inmunológico al incrementar la actividad de las células natural killer (NK) y los linfocitos T citotóxicos.",
+    "precautions": "Evita el masaje en zonas con inflamación aguda, hematomas recientes, trombosis venosa conocida, heridas abiertas o infecciones cutáneas. Si tienes fibromialgia, artritis reumatoide, cáncer con metástasis óseas, osteoporosis severa o trastornos de coagulación, consulta con tu médico antes de recibir masaje profesional o aplicar presión profunda en automasaje. Durante el embarazo, busca terapeutas especializados en masaje prenatal y evita la presión profunda en el vientre durante el primer trimestre. Si el dolor empeora con el masaje, detén la práctica e informa a tu terapeuta.",
+    "howToStart": [
+      "Si nunca has recibido un masaje profesional, busca un terapeuta titulado con buenas reseñas. Una sesión de masaje sueco o descontracturante de 45–60 minutos es el punto de partida ideal para conocer la experiencia.",
+      "Complementa las sesiones profesionales con automasaje diario de 5–10 minutos: empieza por las manos (frota las palmas y masajea cada dedo), sigue con el cuello y hombros (presiona el trapecio superior con movimientos circulares), y termina con la mandíbula (círculos pequeños a ambos lados) o los pies.",
+      "Durante el automasaje, respira lenta y profundamente. Exhala en el momento de mayor presión para facilitar la relajación muscular. Usa crema o aceite neutro si es necesario para reducir la fricción.",
+      "Escucha a tu cuerpo: si una zona está especialmente tensa, dedica 30–60 segundos extra con presión sostenida (isquemia controlada) hasta sentir que el músculo se libera. Hidrátate bien después de cada sesión."
+    ],
+    "commonMistakes": [
+      "Esperar que una sola sesión resuelva tensiones acumuladas durante meses; el masaje terapéutico funciona mejor con regularidad (semanal o quincenal).",
+      "No comunicarte con el terapeuta durante la sesión; la presión debe ajustarse a tu tolerancia (ni demasiado suave para ser efectiva, ni dolorosa).",
+      "Aplicar presión excesiva en el automasaje causando dolor agudo o moretones; debe sentirse como presión profunda pero soportable, nunca punzante.",
+      "Masajear directamente sobre huesos o articulaciones sin la almohadilla muscular, lo que puede irritar el periostio.",
+      "Saltarse la hidratación después del masaje; la liberación de metabolitos y el trabajo sobre la fascia requieren agua para ser procesados por el sistema linfático."
+    ],
+    "mindfulnessSlug": "mindfulness-basico",
+    "mindfulnessName": "Mindfulness básico",
+    "featured": false
+  },
+  {
     "slug": "hidratacion-constante",
     "name": "Hidratación constante (beber agua al despertar y durante el día)",
     "categoryId": "alimentacion-basica",

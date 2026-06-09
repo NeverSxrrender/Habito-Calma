@@ -40,7 +40,7 @@ export default function EspacioCalmaPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
                 <button
                   onClick={() => setActivePractice("respiracion")}
-                  className="group p-6 rounded-2xl bg-white/8 backdrop-blur-sm border border-white/10 hover:border-primary-light/40 hover:shadow-sm transition-all duration-400 text-center"
+                  className="group p-6 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/[0.12] hover:border-primary-light/40 hover:shadow-sm transition-all duration-400 text-center"
                   aria-label="Respiración guiada"
                 >
                   <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">💨</span>
@@ -50,7 +50,7 @@ export default function EspacioCalmaPage() {
 
                 <button
                   onClick={() => setActivePractice("mindfulness")}
-                  className="group p-6 rounded-2xl bg-white/8 backdrop-blur-sm border border-white/10 hover:border-secondary-light/40 hover:shadow-sm transition-all duration-400 text-center"
+                  className="group p-6 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/[0.12] hover:border-secondary-light/40 hover:shadow-sm transition-all duration-400 text-center"
                   aria-label="Mindfulness básico"
                 >
                   <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">🧘</span>
@@ -83,7 +83,7 @@ export default function EspacioCalmaPage() {
                 </button>
               </div>
 
-              <div className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+              <div className="bg-white/20 backdrop-blur-sm border border-white/[0.12] rounded-2xl p-6 sm:p-8">
                 {activePractice === "mindfulness" ? (
                   <GuidedMeditation />
                 ) : (
@@ -101,7 +101,7 @@ export default function EspacioCalmaPage() {
                               className={`text-left px-4 py-2.5 rounded-xl border text-sm transition-all duration-300 ${
                                 selectedPattern.id === p.id
                                   ? "border-primary/50 bg-primary/20 text-white/90"
-                                  : "border-white/10 bg-white/5 text-white/60 hover:border-white/30"
+                                  : "border-white/[0.12] bg-white/15 text-white/60 hover:border-white/30"
                               }`}
                               aria-pressed={selectedPattern.id === p.id}
                             >
@@ -127,14 +127,8 @@ export default function EspacioCalmaPage() {
                           <p>
                             Las técnicas de respiración aquí descritas son herramientas de relajación general y no sustituyen atención médica ni tratamiento profesional.
                           </p>
-                          <p>
-                            Si durante la práctica experimentas mareo, malestar o incomodidad, detén el ejercicio y respira con normalidad.
-                          </p>
-                          <p>
-                            Personas con afecciones respiratorias, cardiovasculares, ansiedad severa u otras condiciones médicas deben adaptar los ejercicios a su comodidad.
-                          </p>
                           <p className="font-medium">
-                            El uso de estas técnicas es bajo tu propia responsabilidad.
+                            Estas técnicas son seguras para la gran mayoría de las personas. Si sientes mareo o molestias, detente y respira con normalidad. Su uso es bajo tu propia responsabilidad.
                           </p>
                         </div>
                       )}

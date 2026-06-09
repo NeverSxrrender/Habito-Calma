@@ -142,8 +142,8 @@ export default function BreathingCircle({ pattern, isActive }: BreathingCirclePr
     return (
       <div className="flex flex-col items-center justify-center gap-6 py-8">
         <div className="relative w-48 h-48 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full bg-white/10" />
-          <div className="absolute inset-4 rounded-full bg-white/5" />
+          <div className="absolute inset-0 rounded-full bg-white/25" />
+          <div className="absolute inset-4 rounded-full bg-white/15" />
           <span className="relative text-4xl opacity-60 text-white/40">○</span>
         </div>
         <p className="text-white/60 text-sm">La respiración aparecerá aquí al iniciar la práctica</p>

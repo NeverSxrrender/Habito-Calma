@@ -191,7 +191,7 @@ export default function GuidedMeditation() {
       {phase === "idle" && (
         <div className="text-center py-8 space-y-6">
           <div className="transition-opacity duration-1000 opacity-100">
-            <div className="w-24 h-24 mx-auto rounded-full bg-white/10 flex items-center justify-center mb-4">
+            <div className="w-24 h-24 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4">
               <span className="text-3xl">🧘</span>
             </div>
             <p className="text-white/60 text-sm max-w-xs mx-auto leading-relaxed">
