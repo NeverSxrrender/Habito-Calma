@@ -5,6 +5,7 @@ import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import BreathingCircle, { BREATHING_PATTERNS, type BreathingPattern } from "@/components/BreathingCircle"
 import SoundPlayer from "@/components/SoundPlayer"
+import GuidedMeditation from "@/components/GuidedMeditation"
 
 type Practice = "respiracion" | "mindfulness"
 
@@ -83,28 +84,13 @@ export default function EspacioCalmaPage() {
               </div>
 
               <div className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
-                {activePractice === "respiracion" && (
-                  <BreathingCircle pattern={selectedPattern} isActive={isActive} />
-                )}
+                {activePractice === "mindfulness" ? (
+                  <GuidedMeditation />
+                ) : (
+                  <>
+                    <BreathingCircle pattern={selectedPattern} isActive={isActive} />
 
-                {activePractice === "mindfulness" && (
-                  <div className="text-center py-8">
-                    <div className={`transition-all duration-700 ease-in-out ${isActive ? "opacity-100" : "opacity-40"}`}>
-                      <div className="w-24 h-24 mx-auto rounded-full bg-white/10 flex items-center justify-center mb-4">
-                        <span className="text-3xl">🧘</span>
-                      </div>
-                      <p className="text-white/60 text-sm max-w-xs mx-auto leading-relaxed">
-                        {isActive
-                          ? "Observa tus pensamientos como nubes que pasan. No los juzgues, solo obsérvalos."
-                          : "Siéntate en una posición cómoda, cierra los ojos y prepárate para comenzar."}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                <div className="my-6 space-y-4">
-                  {activePractice === "respiracion" && (
-                    <>
+                    <div className="my-6 space-y-4">
                       <div className="space-y-2">
                         <label className="text-sm text-white/60 block">Tipo de respiración</label>
                         <div className="grid grid-cols-1 gap-2">
@@ -152,29 +138,29 @@ export default function EspacioCalmaPage() {
                           </p>
                         </div>
                       )}
-                    </>
-                  )}
 
-                  <div className="flex justify-center">
-                    {!isActive ? (
-                      <button
-                        onClick={() => setIsActive(true)}
-                        className="px-6 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary-dark transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                        aria-label="Iniciar práctica"
-                      >
-                        Iniciar práctica
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => setIsActive(false)}
-                        className="px-6 py-2.5 rounded-full bg-warning text-white text-sm font-medium hover:bg-warning/80 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-warning/50"
-                        aria-label="Pausar práctica"
-                      >
-                        Pausar
-                      </button>
-                    )}
-                  </div>
-                </div>
+                      <div className="flex justify-center">
+                        {!isActive ? (
+                          <button
+                            onClick={() => setIsActive(true)}
+                            className="px-6 py-2.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary-dark transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            aria-label="Iniciar práctica"
+                          >
+                            Iniciar práctica
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => setIsActive(false)}
+                            className="px-6 py-2.5 rounded-full bg-warning text-white text-sm font-medium hover:bg-warning/80 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-warning/50"
+                            aria-label="Pausar práctica"
+                          >
+                            Pausar
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="mt-8 text-center">
