@@ -216,15 +216,15 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <a
-                href="#categorias-seccion"
+              <Link
+                href="/catalogo"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-dark hover:bg-primary-dark/80 text-white font-semibold text-xs transition-all duration-300 shadow-xs hover:translate-y-[-1px] focus:outline-hidden"
               >
                 Explorar hábitos
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </Link>
             </div>
             
             <div className="w-full flex justify-center items-center">
@@ -257,9 +257,9 @@ export default function HomePage() {
                   <div
                     key={cat.id}
                     onClick={() => openCategory(cat)}
-                    className="group bg-surface hover:shadow-md border border-muted/30 hover:border-primary-dark/30 rounded-2xl p-6 cursor-pointer flex flex-col transition-all duration-300"
+                    className="group bg-surface hover:shadow-md border border-muted/30 hover:border-primary-dark/30 rounded-2xl p-6 cursor-pointer flex flex-col gap-3 transition-all duration-300"
                   >
-                    <div>
+                    <div className="flex-1">
                       <div className={`rounded-xl flex items-center justify-center mb-4 p-2.5 ${meta.bgClass} ${meta.textClass}`}>
                         {meta.icon}
                       </div>
@@ -271,7 +271,7 @@ export default function HomePage() {
                       </p>
                     </div>
                     
-                    <span className="inline-block self-start text-[10px] font-semibold px-3 py-1 rounded-full bg-background text-text-muted mt-auto">
+                    <span className="inline-block self-start text-[11px] font-semibold px-4 py-1.5 rounded-full bg-background text-text-muted mt-auto">
                       {count} {count === 1 ? "hábito" : "hábitos"}
                     </span>
                   </div>
