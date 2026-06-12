@@ -25,7 +25,6 @@ const soundGroups: SoundGroup[] = [
     variants: [
       { id: "ruido-blanco-1", label: "Variante 1", src: "/audio/ruido-blanco/ruido-blanco-1.mp3" },
       { id: "ruido-blanco-2", label: "Variante 2", src: "/audio/ruido-blanco/ruido-blanco-2.mp3" },
-      { id: "ruido-blanco-3", label: "Variante 3", src: "/audio/ruido-blanco/ruido-blanco-3.mp3" },
     ],
   },
   {
@@ -36,18 +35,16 @@ const soundGroups: SoundGroup[] = [
     variants: [
       { id: "cuencos-1", label: "Variante 1", src: "/audio/cuencos-tibetanos/cuencos-tibetanos-1.mp3" },
       { id: "cuencos-2", label: "Variante 2", src: "/audio/cuencos-tibetanos/cuencos-tibetanos-2.mp3" },
-      { id: "cuencos-3", label: "Variante 3", src: "/audio/cuencos-tibetanos/cuencos-tibetanos-3.mp3" },
     ],
   },
   {
     id: "agua",
     name: "Agua suave",
-    icon: "💧",
+    icon: "🌊",
     description: "Río sereno y agua fluyendo que invita a la relajación",
     variants: [
       { id: "agua-1", label: "Variante 1", src: "/audio/agua-suave/agua-suave-1.mp3" },
       { id: "agua-2", label: "Variante 2", src: "/audio/agua-suave/agua-suave-2.mp3" },
-      { id: "agua-3", label: "Variante 3", src: "/audio/agua-suave/agua-suave-3.mp3" },
     ],
   },
   {
@@ -58,7 +55,6 @@ const soundGroups: SoundGroup[] = [
     variants: [
       { id: "flauta-1", label: "Variante 1", src: "/audio/flauta-budista/flauta-budista-1.mp3" },
       { id: "flauta-2", label: "Variante 2", src: "/audio/flauta-budista/flauta-budista-2.mp3" },
-      { id: "flauta-3", label: "Variante 3", src: "/audio/flauta-budista/flauta-budista-3.mp3" },
     ],
   },
   {
@@ -69,20 +65,9 @@ const soundGroups: SoundGroup[] = [
     variants: [
       { id: "lluvia-1", label: "Variante 1", src: "/audio/lluvia-suave/lluvia-suave-1.mp3" },
       { id: "lluvia-2", label: "Variante 2", src: "/audio/lluvia-suave/lluvia-suave-2.mp3" },
-      { id: "lluvia-3", label: "Variante 3", src: "/audio/lluvia-suave/lluvia-suave-3.mp3" },
     ],
   },
-  {
-    id: "pajaros",
-    name: "Pájaros cantando",
-    icon: "🐦",
-    description: "Trino de aves al amanecer en un bosque tranquilo",
-    variants: [
-      { id: "pajaros-1", label: "Variante 1", src: "/audio/pajaros/pajaros-1.mp3" },
-      { id: "pajaros-2", label: "Variante 2", src: "/audio/pajaros/pajaros-2.mp3" },
-      { id: "pajaros-3", label: "Variante 3", src: "/audio/pajaros/pajaros-3.mp3" },
-    ],
-  },
+
   {
     id: "otros",
     name: "Otros sonidos relajantes",
