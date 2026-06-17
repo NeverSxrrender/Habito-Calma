@@ -6,6 +6,7 @@ import Footer from "@/components/Footer"
 import BreathingCircle, { BREATHING_PATTERNS, type BreathingPattern } from "@/components/BreathingCircle"
 import SoundPlayer from "@/components/SoundPlayer"
 import GuidedMeditation from "@/components/GuidedMeditation"
+import { Heart, FlowerLotus } from "@phosphor-icons/react"
 
 type Practice = "respiracion" | "mindfulness"
 
@@ -43,7 +44,9 @@ export default function EspacioCalmaPage() {
                   className="group p-6 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/[0.12] hover:border-primary-light/40 hover:shadow-sm transition-all duration-400 text-center"
                   aria-label="Respiración guiada"
                 >
-                  <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">💨</span>
+                  <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-400">
+                    <Heart size={36} weight="duotone" color="#A8D5CB" />
+                  </div>
                   <h3 className="font-semibold text-white/90 mb-1.5">Respiración guiada</h3>
                   <p className="text-xs text-white/60">Sigue el ritmo de la respiración con la animación visual.</p>
                 </button>
@@ -53,7 +56,9 @@ export default function EspacioCalmaPage() {
                   className="group p-6 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/[0.12] hover:border-secondary-light/40 hover:shadow-sm transition-all duration-400 text-center"
                   aria-label="Mindfulness básico"
                 >
-                  <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-400">🧘</span>
+                  <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-400">
+                    <FlowerLotus size={36} weight="duotone" color="#D4C9E0" />
+                  </div>
                   <h3 className="font-semibold text-white/90 mb-1.5">Mindfulness básico</h3>
                   <p className="text-xs text-white/60">Un momento de atención plena en tu día.</p>
                 </button>
