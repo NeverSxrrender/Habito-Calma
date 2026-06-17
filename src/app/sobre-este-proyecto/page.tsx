@@ -27,7 +27,7 @@ export default function SobrePage() {
             <p className="text-foreground leading-relaxed">
               Cada hábito incluye una explicación minuciosa de cómo funciona en tu organismo, por qué ayuda, cómo
               empezar hoy mismo y qué errores evitar.               Reconozco que parte de la terminología científica puede
-              resultar densa; precisamente por eso me esfuerzo en detallar los procesos paso a paso, para que
+              resultar densa; precisamente por eso se detallan los procesos paso a paso, para que
               cualquier persona —sin formación previa— pueda entender el porqué de cada recomendación.
             </p>
           </section>
@@ -47,7 +47,7 @@ export default function SobrePage() {
             </p>
             <p className="text-foreground leading-relaxed mb-4">
               Creo que entender el porqué científico de un hábito —cómo afecta a tus hormonas, a tu sistema
-              nervioso, a tu metabolismo— es lo que realmente motiva un cambio. No se trata solo de decir "haz esto",
+              nervioso, a tu metabolismo, etc.— es lo que realmente motiva un cambio. No se trata solo de decir "haz esto",
               sino de explicar por qué funciona, para que cada persona decida con conocimiento de causa.
             </p>
             <p className="text-foreground leading-relaxed">
@@ -74,7 +74,7 @@ export default function SobrePage() {
                 },
                 {
                   title: "Privacidad total",
-                  desc: "Hoy por hoy no almaceno datos personales, no uso cookies de seguimiento y no hay inicio de sesión. Si el proyecto crece y en el futuro fuera necesario implementar cambios en este aspecto, se comunicarán de forma clara y transparente.",
+                  desc: "Hoy por hoy no se almacenan datos personales, no se usan cookies de seguimiento y no hay inicio de sesión. Si el proyecto crece y en el futuro fuera necesario implementar cambios en este aspecto, se comunicarán de forma clara y transparente.",
                 },
                 {
                   title: "Gratuidad",
@@ -97,7 +97,7 @@ export default function SobrePage() {
                 <div>
                   <p className="font-medium text-foreground text-sm mb-0.5">Contenido asistido por IA</p>
                   <p className="text-sm text-text-muted">
-                    Este contenido está creado con ayuda de inteligencia artificial, pero todo es revisado por humanos. Verifico la precisión científica y adapto el lenguaje para que sea claro y accesible.
+                    Este contenido está creado con ayuda de inteligencia artificial, pero todo es revisado por humanos. Se verifica la precisión científica y se adapta el lenguaje para que sea claro y accesible.
                   </p>
                 </div>
               </div>
@@ -107,8 +107,8 @@ export default function SobrePage() {
                 <div>
                   <p className="font-medium text-foreground text-sm mb-0.5">Privacidad de datos</p>
                   <p className="text-sm text-text-muted">
-                    Actualmente no almaceno datos personales. No hay formularios, no hay registro, no hay cookies de
-                    seguimiento. Si esto cambiara en el futuro, lo comunicaré con transparencia.
+                    Actualmente no se almacenan datos personales. No hay formularios, no hay registro, no hay cookies de
+                    seguimiento. Si esto cambiara en el futuro, se comunicará con transparencia.
                   </p>
                 </div>
               </div>
@@ -121,13 +121,13 @@ export default function SobrePage() {
               <span className="shrink-0 text-lg mt-0.5">💬</span>
               <div>
                 <p className="text-foreground leading-relaxed">
-                  En Hábito Calma valoro mucho el feedback de quienes me visitan. Si tienes alguna sugerencia
+                  En Hábito Calma se valora mucho el feedback de quienes visitan la web. Si tienes alguna sugerencia
                   para mejorar la web, ideas para nuevos hábitos, o cualquier comentario que quieras compartir,
-                  escríbeme a{' '}
+                  escribe a{' '}
                   <a href="mailto:contacto@habitocalma.com" className="text-primary-dark underline underline-offset-2 hover:text-primary transition-colors">
                     contacto@habitocalma.com
                   </a>
-                  . Cada opinión me ayuda a construir una experiencia más útil y cuidada.
+                  . Cada opinión ayuda a construir una experiencia más útil y cuidada.
                 </p>
               </div>
             </div>

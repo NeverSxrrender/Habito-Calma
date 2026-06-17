@@ -178,7 +178,7 @@ export default function HomePage() {
               </div>
 
               {/* Three Science Features */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col items-start gap-2">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#e8f5f0] dark:bg-[#1a2e26]">
                   <Leaf size={16} className="text-[#3C7C4B] dark:text-[#6FBE82] shrink-0" />
                   <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Hábitos pequeños, cambios reales</span>

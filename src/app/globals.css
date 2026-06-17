@@ -105,6 +105,24 @@ body {
   }
 }
 
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-ring {
+  animation: spin-ring 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+
+.animate-glow-breathe {
+  animation: glow-breathe 4s ease-in-out infinite;
+}
 @keyframes fadeInUp {
   from {
     opacity: 0;

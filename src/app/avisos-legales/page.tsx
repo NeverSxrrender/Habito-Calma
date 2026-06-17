@@ -30,21 +30,21 @@ export default function AvisosLegalesPage() {
                   psicológico ni profesional de ningún tipo.
                 </li>
                 <li>
-                  No garantizamos la exactitud, integridad o actualidad del contenido. Aunque nos esforzamos por
+                  No se garantiza la exactitud, integridad o actualidad del contenido. Aunque se procura
                   ofrecer información precisa basada en ciencia, los conocimientos evolucionan y pueden existir errores.
                 </li>
                 <li>
                   El uso que hagas de la información contenida en esta web es bajo tu propia responsabilidad.
                 </li>
                 <li>
-                  No nos hacemos responsables de ningún daño o perjuicio derivado del uso de esta web o de la
+                  No se asume responsabilidad por ningún daño o perjuicio derivado del uso de esta web o de la
                   información contenida en ella.
                 </li>
                 <li>
-                  La web es gratuita y no requiere registro. En la actualidad no recopilamos datos personales de los usuarios.
+                  La web es gratuita y no requiere registro. En la actualidad no se recopilan datos personales de los usuarios.
                 </li>
                 <li>
-                  Nos reservamos el derecho de modificar, suspender o interrumpir la web en cualquier momento sin
+                  Se reserva el derecho de modificar, suspender o interrumpir la web en cualquier momento sin
                   previo aviso.
                 </li>
               </ul>
@@ -118,8 +118,8 @@ export default function AvisosLegalesPage() {
                 propiedad del proyecto Hábito Calma. Puedes compartir la información citando la fuente.
               </p>
               <p>
-                <strong>Enlaces externos:</strong> Esta web puede contener enlaces a sitios externos. No nos
-                hacemos responsables del contenido ni de las políticas de privacidad de dichos sitios.
+                <strong>Enlaces externos:</strong> Esta web puede contener enlaces a sitios externos. No se
+                asume responsabilidad por el contenido ni por las políticas de privacidad de dichos sitios.
               </p>
               <p className="text-sm text-text-muted mt-4">
                 Última actualización: junio 2026.
