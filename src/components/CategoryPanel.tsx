@@ -215,11 +215,11 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
               <h3 className="font-bold text-foreground text-[18px] leading-snug mb-3">
                 {extra.heroTitle}
               </h3>
-              <p className="text-text-muted text-[14px] leading-relaxed mb-3">
+              <p className="text-text-muted text-[15px] leading-relaxed mb-3">
                 {extra.heroDesc}
               </p>
               {extra.heroHighlight && (
-                <p className="text-primary-dark font-semibold text-[14px] leading-relaxed">
+                <p className="text-primary-dark font-semibold text-[15px] leading-relaxed">
                   {extra.heroHighlight}
                 </p>
               )}
@@ -238,7 +238,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
           {/* Beneficios Principales */}
           {extra.benefits.length > 0 && (
             <div>
-              <h4 className="text-[14px] font-bold text-foreground tracking-wider uppercase mb-5">
+              <h4 className="text-[15px] font-bold text-foreground tracking-wider uppercase mb-5">
                 Beneficios principales
               </h4>
               <div className="grid grid-cols-3 gap-5">
@@ -247,8 +247,8 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                     <div className="w-10 h-10 rounded-full bg-surface shadow-xs flex items-center justify-center text-xl">
                       {b.icon}
                     </div>
-                    <span className="font-semibold text-[13px] text-foreground">{b.title}</span>
-                    <span className="text-[11px] text-text-muted leading-tight">{b.desc}</span>
+                    <span className="font-semibold text-[14px] text-foreground">{b.title}</span>
+                    <span className="text-[13px] text-text-muted leading-tight">{b.desc}</span>
                   </div>
                 ))}
               </div>
@@ -258,16 +258,16 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
           {/* Cómo empezar */}
           {extra.steps.length > 0 && (
             <div>
-              <h4 className="text-[14px] font-bold text-foreground tracking-wider uppercase mb-5">
+              <h4 className="text-[15px] font-bold text-foreground tracking-wider uppercase mb-5">
                 Cómo empezar
               </h4>
               <div className="flex flex-col gap-4">
                 {extra.steps.map((step, idx) => (
                   <div key={idx} className="flex gap-4 items-center">
-                    <div className="w-8 h-8 rounded-full bg-primary-dark text-white font-bold text-[13px] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-primary-dark text-white font-bold text-[14px] flex items-center justify-center shrink-0">
                       {idx + 1}
                     </div>
-                    <p className="text-foreground text-[14px] font-medium">{step}</p>
+                    <p className="text-foreground text-[15px] font-medium">{step}</p>
                   </div>
                 ))}
               </div>
@@ -276,7 +276,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
           {/* Hábitos de la Categoría */}
           <div>
-            <h4 className="text-[14px] font-bold text-foreground tracking-wider uppercase mb-5">
+            <h4 className="text-[15px] font-bold text-foreground tracking-wider uppercase mb-5">
               Hábitos de {category.name.toLowerCase()} ({habits.length})
             </h4>
             <div className="flex flex-col gap-4">
@@ -289,13 +289,13 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                         {habitEmoji}
                       </div>
                       <div className="min-w-0 flex flex-col gap-1">
-                        <h5 className="font-semibold text-foreground text-[15px] truncate">
+                        <h5 className="font-semibold text-foreground text-[16px] truncate">
                           {habit.name}
                         </h5>
                         <div className="flex items-center gap-2">
-                          <span className="text-[12px] text-text-light">{habit.estimatedTime}</span>
-                          <span className="text-[11px] text-text-light">•</span>
-                          <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${difficultyColors[habit.difficulty]}`}>
+                          <span className="text-[13px] text-text-light">{habit.estimatedTime}</span>
+                          <span className="text-[13px] text-text-light">•</span>
+                          <span className={`text-[13px] font-semibold px-2.5 py-0.5 rounded-full ${difficultyColors[habit.difficulty]}`}>
                             {difficultyLabels[habit.difficulty]}
                           </span>
                         </div>
@@ -303,7 +303,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
                     </div>
                     <Link
                       href={`/habito/${habit.slug}`}
-                      className="px-6 py-2.5 bg-primary-dark hover:bg-primary-dark/80 text-white rounded-full text-[14px] font-semibold shrink-0 transition-colors duration-200"
+                      className="px-6 py-2.5 bg-primary-dark hover:bg-primary-dark/80 text-white rounded-full text-[15px] font-semibold shrink-0 transition-colors duration-200"
                     >
                       Empezar
                     </Link>
@@ -316,7 +316,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
 
         {/* Footer */}
         <div className="p-12 border-t border-muted/30 bg-surface flex flex-col items-center gap-6">
-          <div className="text-[14px] text-text-muted italic flex items-center gap-2">
+          <div className="text-[15px] text-text-muted italic flex items-center gap-2">
             <svg className="w-4 h-4 text-primary-dark opacity-60" fill="currentColor" viewBox="0 0 24 24">
               <path d="M11.192 15.757c0-.962-.399-1.923-1.197-2.692-.8-.77-1.801-1.155-3.003-1.155H6.5v-.462c0-1.859.506-3.327 1.519-4.403C9.032 6.01 10.519 5.42 12.5 5.27l-.462-1.924c-2.73.256-4.838 1.25-6.326 2.98C4.225 8.056 3.48 10.366 3.48 13.257c0 2.213.628 3.974 1.884 5.282 1.256 1.308 2.808 1.962 4.654 1.962.962 0 1.859-.385 2.692-1.154.833-.77 1.25-1.764 1.25-2.98 0-.61-.096-1.17-.288-1.61zm10 0c0-.962-.399-1.923-1.197-2.692-.8-.77-1.801-1.155-3.003-1.155H16.5v-.462c0-1.859.506-3.327 1.519-4.403 1.013-1.077 2.502-1.667 4.481-1.817l-.462-1.924c-2.73.256-4.838 1.25-6.326 2.98-1.487 1.73-2.232 4.04-2.232 6.931 0 2.213.628 3.974 1.884 5.282 1.256 1.308 2.808 1.962 4.654 1.962.962 0 1.859-.385 2.692-1.154.833-.77 1.25-1.764 1.25-2.98 0-.61-.096-1.17-.288-1.61z"/>
             </svg>
@@ -324,7 +324,7 @@ export default function CategoryPanel({ category, habits, onClose }: CategoryPan
           </div>
           <button
             onClick={handleClose}
-            className="w-full text-center py-3.5 rounded-full border border-muted-dark/50 hover:bg-background text-foreground text-[14px] font-semibold transition-all duration-200"
+            className="w-full text-center py-3.5 rounded-full border border-muted-dark/50 hover:bg-background text-foreground text-[15px] font-semibold transition-all duration-200"
           >
             Volver al catálogo
           </button>

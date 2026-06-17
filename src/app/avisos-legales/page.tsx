@@ -41,7 +41,7 @@ export default function AvisosLegalesPage() {
                   información contenida en ella.
                 </li>
                 <li>
-                  La web es gratuita y no requiere registro. No recopilamos datos personales de los usuarios.
+                  La web es gratuita y no requiere registro. En la actualidad no recopilamos datos personales de los usuarios.
                 </li>
                 <li>
                   Nos reservamos el derecho de modificar, suspender o interrumpir la web en cualquier momento sin
@@ -59,39 +59,39 @@ export default function AvisosLegalesPage() {
                 información.
               </p>
 
-              <h3 className="font-semibold text-foreground text-base mt-6">Datos que recopilamos</h3>
+              <h3 className="font-semibold text-foreground text-base mt-6">Situación actual</h3>
               <p>
-                <strong>Ninguno.</strong> Hábito Calma no recopila, almacena ni procesa datos personales de los
+                Hoy por hoy, Hábito Calma <strong>no recopila, almacena ni procesa datos personales</strong> de los
                 usuarios. No hay formularios de registro, no hay inicio de sesión, no hay formularios de contacto que
                 almacenen información.
               </p>
-
-              <h3 className="font-semibold text-foreground text-base mt-6">Cookies</h3>
               <p>
                 Esta web no utiliza cookies de seguimiento, cookies de publicidad ni cookies de análisis que
                 identifiquen tu actividad. Es posible que se utilicen cookies técnicas necesarias para el
                 funcionamiento básico de la web (como la sesión de navegación), que no almacenan información personal.
               </p>
 
-              <h3 className="font-semibold text-foreground text-base mt-6">Enlaces de sonido</h3>
+              <h3 className="font-semibold text-foreground text-base mt-6">Posibles cambios futuros</h3>
               <p>
-                Los sonidos disponibles en el Espacio de Calma se cargan desde fuentes externas (SoundHelix). Al
-                reproducirlos, tu navegador se conecta a esos servidores, lo que puede generar registros anónimos de
-                acceso. No tenemos control sobre estos registros.
+                Si el proyecto crece, es posible que en el futuro necesitemos implementar sistemas de análisis
+                anónimos o funcionalidades que requieran almacenar ciertos datos. En ese caso, actualizaremos esta
+                política de privacidad de forma clara y transparente, especificando qué datos se recopilan, con qué
+                finalidad y cómo se gestionan.
               </p>
 
               <h3 className="font-semibold text-foreground text-base mt-6">Alojamiento</h3>
               <p>
-                Esta web está alojada en Vercel, cuyos servidores pueden registrar direcciones IP de forma temporal
+                Esta web está alojada en Netlify, cuyos servidores pueden registrar direcciones IP de forma temporal
                 con fines técnicos y de seguridad. Estos registros no están vinculados a ninguna información personal
                 identificable ni los utilizamos para seguimiento.
               </p>
 
               <h3 className="font-semibold text-foreground text-base mt-6">Derechos</h3>
               <p>
-                Dado que no recopilamos datos personales, no es necesario ejercer derechos de acceso, rectificación,
-                cancelación u oposición sobre datos que no poseemos. Si tienes alguna pregunta sobre privacidad,
-                puedes consultar el repositorio público del proyecto.
+                Dado que en la actualidad no recopilamos datos personales, no es necesario ejercer derechos de
+                acceso, rectificación, cancelación u oposición sobre datos que no poseemos. Si la situación cambia
+                en el futuro, habilitaremos los mecanismos correspondientes. Si tienes alguna pregunta sobre
+                privacidad, puedes consultar el repositorio público del proyecto.
               </p>
             </div>
           </section>

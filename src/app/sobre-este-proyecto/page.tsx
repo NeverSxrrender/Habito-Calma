@@ -5,7 +5,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Sobre este proyecto — Hábito Calma",
-  description: "Qué es Hábito Calma, por qué existe y nuestros principios de transparencia.",
+  description: "Qué es Hábito Calma, por qué existe y mis principios de transparencia.",
 }
 
 export default function SobrePage() {
@@ -21,13 +21,14 @@ export default function SobrePage() {
             <h2 className="font-display text-xl font-semibold text-foreground mb-3">¿Qué es Hábito Calma?</h2>
             <p className="text-foreground leading-relaxed mb-4">
               Hábito Calma es una biblioteca gratuita de hábitos generales con base científica, explicados de forma
-              clara y accesible. No es una aplicación de productividad ni un diario de seguimiento. Es un lugar donde
-              aprender sobre hábitos que pueden mejorar tu bienestar, sin presión, sin culpa, sin prisas.
+              clara. No es una aplicación de productividad ni un diario de seguimiento. Es un lugar donde
+              aprender sobre hábitos que pueden mejorar tu bienestar.
             </p>
             <p className="text-foreground leading-relaxed">
-              Cada hábito incluye una explicación sencilla de cómo funciona en tu organismo, por qué ayuda, cómo
-              empezar hoy mismo y qué errores evitar. Todo explicado con terminología científica pero en un lenguaje
-              que cualquier persona puede entender.
+              Cada hábito incluye una explicación minuciosa de cómo funciona en tu organismo, por qué ayuda, cómo
+              empezar hoy mismo y qué errores evitar.               Reconozco que parte de la terminología científica puede
+              resultar densa; precisamente por eso me esfuerzo en detallar los procesos paso a paso, para que
+              cualquier persona —sin formación previa— pueda entender el porqué de cada recomendación.
             </p>
           </section>
 
@@ -39,17 +40,24 @@ export default function SobrePage() {
               rápidos sin explicación ni contexto).
             </p>
             <p className="text-foreground leading-relaxed mb-4">
-              Hábito Calma nace del convencimiento de que entender el porqué científico de un hábito —cómo afecta a
-              tus hormonas, a tu sistema nervioso, a tu metabolismo— es lo que realmente motiva un cambio sostenible.
+              Este proyecto nace con la intención de ayudar a las personas a reducir su nivel de estrés y a encontrar
+              un lugar y un momento del día para desconectar y relajarse. Quiero que quienes me visiten puedan
+              tomarse un respiro, aprender algo nuevo sobre su propio cuerpo, y llevar ese conocimiento a su vida
+              cotidiana.
+            </p>
+            <p className="text-foreground leading-relaxed mb-4">
+              Creo que entender el porqué científico de un hábito —cómo afecta a tus hormonas, a tu sistema
+              nervioso, a tu metabolismo— es lo que realmente motiva un cambio. No se trata solo de decir "haz esto",
+              sino de explicar por qué funciona, para que cada persona decida con conocimiento de causa.
             </p>
             <p className="text-foreground leading-relaxed">
-              Además, queríamos crear un espacio digital que se sintiera como un refugio: sin ruido, sin notificaciones,
-              sin publicidad, sin recolección de datos, sin presión. Un lugar donde puedas ir a aprender y a respirar.
+              Además, quería crear un espacio digital que se sintiera como un refugio: sin ruido, sin notificaciones,
+              sin publicidad, sin presión. Un lugar donde puedas ir a aprender y a relajarte, cada uno a su ritmo.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Nuestros principios</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Mis principios</h2>
             <ul className="space-y-4">
               {[
                 {
@@ -66,11 +74,11 @@ export default function SobrePage() {
                 },
                 {
                   title: "Privacidad total",
-                  desc: "No almacenamos datos personales, no usamos cookies de seguimiento, no hay inicio de sesión. No necesitamos saber quién eres para ayudarte.",
+                  desc: "Hoy por hoy no almaceno datos personales, no uso cookies de seguimiento y no hay inicio de sesión. Si el proyecto crece y en el futuro fuera necesario implementar cambios en este aspecto, se comunicarán de forma clara y transparente.",
                 },
                 {
                   title: "Gratuidad",
-                  desc: "Hábito Calma es y será siempre gratuito. Sin suscripciones, sin compras dentro de la app, sin publicidad.",
+                  desc: "Hábito Calma es gratuito porque quiero que cualquier persona pueda acceder a estas herramientas, independientemente de su situación económica. Mi intención es mantenerlo así e ir actualizando y mejorando los contenidos con el tiempo.",
                 },
               ].map((item, i) => (
                 <li key={i} className="bg-surface border border-muted/40 rounded-xl p-5">
@@ -89,8 +97,7 @@ export default function SobrePage() {
                 <div>
                   <p className="font-medium text-foreground text-sm mb-0.5">Contenido asistido por IA</p>
                   <p className="text-sm text-text-muted">
-                    Este contenido está creado con ayuda de inteligencia artificial, pero todo es revisado y curado por
-                    humanos. Verificamos la precisión científica y adaptamos el lenguaje para que sea claro y accesible.
+                    Este contenido está creado con ayuda de inteligencia artificial, pero todo es revisado por humanos. Verifico la precisión científica y adapto el lenguaje para que sea claro y accesible.
                   </p>
                 </div>
               </div>
@@ -100,10 +107,28 @@ export default function SobrePage() {
                 <div>
                   <p className="font-medium text-foreground text-sm mb-0.5">Privacidad de datos</p>
                   <p className="text-sm text-text-muted">
-                    No almacenamos datos personales. No hay formularios, no hay registro, no hay cookies de
-                    seguimiento. Tu visita es anónima.
+                    Actualmente no almaceno datos personales. No hay formularios, no hay registro, no hay cookies de
+                    seguimiento. Si esto cambiara en el futuro, lo comunicaré con transparencia.
                   </p>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="font-display text-xl font-semibold text-foreground mb-3">¿Sugerencias o ideas?</h2>
+            <div className="flex items-start gap-3 p-4 bg-tertiary-light/10 rounded-xl border border-tertiary-light/20">
+              <span className="shrink-0 text-lg mt-0.5">💬</span>
+              <div>
+                <p className="text-foreground leading-relaxed">
+                  En Hábito Calma valoro mucho el feedback de quienes me visitan. Si tienes alguna sugerencia
+                  para mejorar la web, ideas para nuevos hábitos, o cualquier comentario que quieras compartir,
+                  escríbeme a{' '}
+                  <a href="mailto:contacto@habitocalma.com" className="text-primary-dark underline underline-offset-2 hover:text-primary transition-colors">
+                    contacto@habitocalma.com
+                  </a>
+                  . Cada opinión me ayuda a construir una experiencia más útil y cuidada.
+                </p>
               </div>
             </div>
           </section>

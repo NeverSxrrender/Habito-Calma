@@ -46,10 +46,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-foreground mb-3">Transparencia</h3>
             <ul className="space-y-2 text-foreground/85" role="list">
-              <li>No almacenamos datos personales</li>
+              <li>Sin almacenamiento de datos personales</li>
               <li>Sin cookies de seguimiento</li>
               <li>Sin inicio de sesión</li>
-              <li>100% gratuito</li>
+              <li>Gratuito, sin publicidad</li>
             </ul>
           </div>
         </div>

@@ -178,41 +178,34 @@ export default function HomePage() {
               </div>
 
               {/* Three Science Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                      </svg>
-                    </div>
-                    <span className="font-semibold text-xs text-foreground">Basado en ciencia</span>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-3 min-w-[160px]">
+                  <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a6 6 0 00-6 6c0 3.5 2.5 6.5 6 10 3.5-3.5 6-6.5 6-10a6 6 0 00-6-6z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9a2 2 0 100-4 2 2 0 000 4z" />
+                    </svg>
                   </div>
-                  <p className="text-[11px] text-text-muted leading-relaxed">Hábitos respaldados por estudios y evidencia.</p>
+                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Sin agobios · Un hábito a la vez, a tu ritmo</span>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2Z" />
-                      </svg>
-                    </div>
-                    <span className="font-semibold text-xs text-foreground">Sin prisa, sin ruido</span>
+                <div className="flex items-center gap-3 min-w-[160px]">
+                  <div className="w-9 h-9 rounded-full bg-[#ECEAF5] dark:bg-[#201B2E] text-[#6E53B0] dark:text-[#9F8BE2] flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                    </svg>
                   </div>
-                  <p className="text-[11px] text-text-muted leading-relaxed">Pequeños pasos que crean grandes cambios.</p>
+                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Para el día a día real · No para la versión perfecta de ti</span>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <span className="font-semibold text-xs text-foreground">Para tu vida real</span>
+                <div className="flex items-center gap-3 min-w-[160px]">
+                  <div className="w-9 h-9 rounded-full bg-[#FDF2E2] dark:bg-[#302619] text-[#B25E00] dark:text-[#E2983B] flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M18 14l1 3.5 3.5 1-3.5 1L18 23l-1-3.5-3.5-1 3.5-1 1-3.5z" />
+                    </svg>
                   </div>
-                  <p className="text-[11px] text-text-muted leading-relaxed">Hábitos realistas que se adaptan a ti.</p>
+                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Respaldado por ciencia · Sin promesas vacías</span>
                 </div>
               </div>
 
@@ -263,15 +256,15 @@ export default function HomePage() {
                       <div className={`rounded-xl flex items-center justify-center mb-4 p-2.5 ${meta.bgClass} ${meta.textClass}`}>
                         {meta.icon}
                       </div>
-                      <h3 className="font-semibold text-foreground text-[15px] group-hover:text-primary-dark transition-colors duration-200 mb-1.5">
+                      <h3 className="font-semibold text-foreground text-[17px] group-hover:text-primary-dark transition-colors duration-200 mb-1.5">
                         {cat.name}
                       </h3>
-                      <p className="text-[11px] text-text-muted leading-relaxed line-clamp-3">
+                      <p className="text-[13px] text-text-muted leading-relaxed line-clamp-3">
                         {cat.description}
                       </p>
                     </div>
                     
-                    <span className="inline-block self-start text-[11px] font-semibold px-4 py-1.5 rounded-full bg-background text-text-muted mt-auto">
+                    <span className="inline-block self-start text-[13px] font-semibold px-4 py-1.5 rounded-full bg-background text-text-muted mt-auto">
                       {count} {count === 1 ? "hábito" : "hábitos"}
                     </span>
                   </div>

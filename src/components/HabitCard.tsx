@@ -58,12 +58,12 @@ export default function HabitCard({ habit, compact, onClick }: HabitCardProps) {
             <h3 className="font-semibold text-foreground text-sm leading-snug group-hover:text-primary-dark transition-colors duration-200">
               {habit.name}
             </h3>
-            <p className="text-[11px] text-text-light mt-1">{habit.estimatedTime}</p>
+            <p className="text-[13px] text-text-light mt-1">{habit.estimatedTime}</p>
           </div>
         </div>
 
         {!compact && (
-          <p className="text-text-muted text-[12px] leading-relaxed line-clamp-2 mt-2">
+          <p className="text-text-muted text-[13px] leading-relaxed line-clamp-2 mt-2">
             {habit.summary}
           </p>
         )}

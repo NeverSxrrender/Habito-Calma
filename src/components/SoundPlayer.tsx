@@ -23,8 +23,8 @@ const soundGroups: SoundGroup[] = [
     icon: "📻",
     description: "Sonido constante para enmascarar distracciones",
     variants: [
-      { id: "ruido-blanco-1", label: "Variante 1", src: "/audio/ruido-blanco/ruido-blanco-1.mp3" },
-      { id: "ruido-blanco-2", label: "Variante 2", src: "/audio/ruido-blanco/ruido-blanco-2.mp3" },
+      { id: "ruido-blanco-1", label: "Variante 1", src: "/audio/ruido-blanco/ruido-blanco1.wav" },
+      { id: "ruido-blanco-2", label: "Variante 2", src: "/audio/ruido-blanco/ruido-blanco2.wav" },
     ],
   },
   {
@@ -33,8 +33,8 @@ const soundGroups: SoundGroup[] = [
     icon: "🔔",
     description: "Armónicos suaves y resonantes para meditación profunda",
     variants: [
-      { id: "cuencos-1", label: "Variante 1", src: "/audio/cuencos-tibetanos/cuencos-tibetanos-1.mp3" },
-      { id: "cuencos-2", label: "Variante 2", src: "/audio/cuencos-tibetanos/cuencos-tibetanos-2.mp3" },
+      { id: "cuencos-1", label: "Variante 1", src: "/audio/cuencos-tibetanos/cuencos-tibetanos1.wav" },
+      { id: "cuencos-2", label: "Variante 2", src: "/audio/cuencos-tibetanos/cuencos-tibetanos2.wav" },
     ],
   },
   {
@@ -43,28 +43,19 @@ const soundGroups: SoundGroup[] = [
     icon: "🌊",
     description: "Río sereno y agua fluyendo que invita a la relajación",
     variants: [
-      { id: "agua-1", label: "Variante 1", src: "/audio/agua-suave/agua-suave-1.mp3" },
-      { id: "agua-2", label: "Variante 2", src: "/audio/agua-suave/agua-suave-2.mp3" },
+      { id: "agua-1", label: "Variante 1", src: "/audio/agua-suave/agua-suave1.wav" },
+      { id: "agua-2", label: "Variante 2", src: "/audio/agua-suave/agua-suave2.wav" },
     ],
   },
-  {
-    id: "flauta",
-    name: "Flauta budista",
-    icon: "🪈",
-    description: "Melodía serena para acompañar la meditación",
-    variants: [
-      { id: "flauta-1", label: "Variante 1", src: "/audio/flauta-budista/flauta-budista-1.mp3" },
-      { id: "flauta-2", label: "Variante 2", src: "/audio/flauta-budista/flauta-budista-2.mp3" },
-    ],
-  },
+
   {
     id: "lluvia",
     name: "Lluvia suave",
     icon: "🌧️",
     description: "Gotas de lluvia cayendo sobre hojas y tierra",
     variants: [
-      { id: "lluvia-1", label: "Variante 1", src: "/audio/lluvia-suave/lluvia-suave-1.mp3" },
-      { id: "lluvia-2", label: "Variante 2", src: "/audio/lluvia-suave/lluvia-suave-2.mp3" },
+      { id: "lluvia-1", label: "Variante 1", src: "/audio/lluvia-suave/lluvia-suave1.wav" },
+      { id: "lluvia-2", label: "Variante 2", src: "/audio/lluvia-suave/lluvia-suave2.wav" },
     ],
   },
 
