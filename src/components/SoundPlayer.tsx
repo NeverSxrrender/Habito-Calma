@@ -66,6 +66,7 @@ const soundGroups: SoundGroup[] = [
     description: "Sonidos adicionales para variar tu experiencia de calma",
     variants: [
       { id: "otros-1", label: "Variante 1", src: "/audio/otros/otros1.mp3" },
+      { id: "otros-2", label: "Variante 2", src: "/audio/otros/otros2.mp3" },
     ],
   },
 ]

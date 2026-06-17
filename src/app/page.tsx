@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useRef, useEffect, useState, useMemo } from "react"
-import { Barbell, Moon, Leaf, Brain } from "@phosphor-icons/react"
+import { Barbell, Moon, Leaf, Brain, Flask } from "@phosphor-icons/react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import HabitCard from "@/components/HabitCard"
@@ -178,34 +178,20 @@ export default function HomePage() {
               </div>
 
               {/* Three Science Features */}
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-3 min-w-[160px]">
-                  <div className="w-9 h-9 rounded-full bg-[#EAF2E8] dark:bg-[#1D2E23] text-[#3C7C4B] dark:text-[#6FBE82] flex items-center justify-center shrink-0">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a6 6 0 00-6 6c0 3.5 2.5 6.5 6 10 3.5-3.5 6-6.5 6-10a6 6 0 00-6-6z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9a2 2 0 100-4 2 2 0 000 4z" />
-                    </svg>
-                  </div>
-                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Sin agobios · Un hábito a la vez, a tu ritmo</span>
+              <div className="flex flex-wrap gap-3">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#e8f5f0] dark:bg-[#1a2e26]">
+                  <Leaf size={16} className="text-[#3C7C4B] dark:text-[#6FBE82] shrink-0" />
+                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Hábitos pequeños, cambios reales</span>
                 </div>
 
-                <div className="flex items-center gap-3 min-w-[160px]">
-                  <div className="w-9 h-9 rounded-full bg-[#ECEAF5] dark:bg-[#201B2E] text-[#6E53B0] dark:text-[#9F8BE2] flex items-center justify-center shrink-0">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-                    </svg>
-                  </div>
-                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Para el día a día real · No para la versión perfecta de ti</span>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#e8f5f0] dark:bg-[#1a2e26]">
+                  <Moon size={16} className="text-[#6E53B0] dark:text-[#9F8BE2] shrink-0" />
+                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">A tu ritmo, sin presión</span>
                 </div>
 
-                <div className="flex items-center gap-3 min-w-[160px]">
-                  <div className="w-9 h-9 rounded-full bg-[#FDF2E2] dark:bg-[#302619] text-[#B25E00] dark:text-[#E2983B] flex items-center justify-center shrink-0">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M18 14l1 3.5 3.5 1-3.5 1L18 23l-1-3.5-3.5-1 3.5-1 1-3.5z" />
-                    </svg>
-                  </div>
-                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Respaldado por ciencia · Sin promesas vacías</span>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#e8f5f0] dark:bg-[#1a2e26]">
+                  <Flask size={16} className="text-[#B25E00] dark:text-[#E2983B] shrink-0" />
+                  <span className="font-semibold text-[13px] text-foreground whitespace-nowrap">Con base científica</span>
                 </div>
               </div>
 
