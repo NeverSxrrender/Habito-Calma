@@ -182,11 +182,12 @@ export default function SoundPlayer() {
         return (
           <div
             key={group.id}
-            className="rounded-2xl border border-white/[0.12] bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-700 ease-in-out"
+            className="group relative rounded-2xl border border-white/[0.12] bg-white/15 backdrop-blur-sm overflow-hidden"
           >
+            <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             <button
               onClick={() => handleToggle(group.id)}
-              className="w-full flex items-center gap-3 p-4 sm:p-5 text-left transition-colors duration-300 hover:bg-white/10"
+              className="relative w-full flex items-center gap-3 p-4 sm:p-5 text-left"
               aria-expanded={isExpanded}
             >
               <SoundRing group={group} />
@@ -208,7 +209,7 @@ export default function SoundPlayer() {
             </button>
 
             <div
-              className={`transition-all duration-700 ease-in-out ${
+              className={`relative transition-all duration-700 ease-in-out ${
                 isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >

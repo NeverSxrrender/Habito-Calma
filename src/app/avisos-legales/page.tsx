@@ -100,7 +100,9 @@ export default function AvisosLegalesPage() {
             <h2 className="font-display text-xl font-semibold text-foreground mb-3">Aviso legal</h2>
             <div className="space-y-4 text-foreground leading-relaxed text-[15px]">
               <p>
-                <strong>Responsable del sitio web:</strong> Hábito Calma es un proyecto personal sin ánimo de lucro.
+                <strong>Responsable del sitio web:</strong> Alejandro Martínez Rosales.
+                Contacto: <a href="mailto:habitocalma@gmail.com" className="underline underline-offset-2 decoration-white/30 hover:decoration-white/60 transition-colors">habitocalma@gmail.com</a>.
+                Hábito Calma es un proyecto personal sin ánimo de lucro.
               </p>
               <p>
                 <strong>Contenido general:</strong> Toda la información publicada en esta web tiene carácter
