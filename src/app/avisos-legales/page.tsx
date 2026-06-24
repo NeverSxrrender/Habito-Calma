@@ -81,7 +81,7 @@ export default function AvisosLegalesPage() {
 
               <h3 className="font-semibold text-foreground text-base mt-6">Alojamiento</h3>
               <p>
-                Esta web está alojada en Netlify, cuyos servidores pueden registrar direcciones IP de forma temporal
+                Esta web está alojada en Vercel, cuyos servidores pueden registrar direcciones IP de forma temporal
                 con fines técnicos y de seguridad. Estos registros no están vinculados a ninguna información personal
                 identificable ni los utilizamos para seguimiento.
               </p>

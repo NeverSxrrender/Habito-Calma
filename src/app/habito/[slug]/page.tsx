@@ -116,7 +116,7 @@ export default function HabitoPage() {
           )}
 
           <section className="mb-10">
-            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Cómo empezar hoy</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Cómo empezar</h2>
             <ol className="space-y-3">
               {habit.howToStart.map((step, i) => (
                 <li key={i} className="flex gap-3">
@@ -127,6 +127,10 @@ export default function HabitoPage() {
                 </li>
               ))}
             </ol>
+            <div className="mt-5 flex items-start gap-2.5 p-3.5 rounded-xl bg-warning/10 border border-warning/20 text-sm text-foreground leading-relaxed">
+              <span className="shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center rounded-full bg-warning/20 text-warning text-xs font-bold">!</span>
+              <p>Este contenido es informativo y no sustituye el consejo de un profesional de la salud. Si tienes alguna condición médica o dudas, consulta con tu médico antes de comenzar.</p>
+            </div>
           </section>
 
           <section className="mb-10">
