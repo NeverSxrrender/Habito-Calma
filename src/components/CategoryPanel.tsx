@@ -28,7 +28,7 @@ const categoryExtraDetails: Record<string, {
   emojis: Record<string, string>
 }> = {
   "ejercicio-fisico": {
-    heroTitle: "Muévete cada día (aunque sea poco)",
+    heroTitle: "Moverse cada día (aunque sea poco)",
     heroDesc: "Tu cuerpo está hecho para moverse. Cuando no lo haces, pierde energía, fuerza y claridad mental.",
     heroHighlight: "Con solo 20–30 min al día puedes mejorar tu energía, reducir estrés y dormir mejor.",
     heroImage: "/exercise_illustration.png",
@@ -38,9 +38,9 @@ const categoryExtraDetails: Record<string, {
       { icon: "🌙", title: "Mejor descanso", desc: "Favorece un sueño más profundo." }
     ],
     steps: [
-      "Empieza con pequeños pasos (10–15 min).",
-      "Elige actividades que disfrutes.",
-      "Sé constante, no perfecto."
+      "Comenzar con pequeños pasos (10–15 min) facilita la constancia.",
+      "Elegir actividades que se disfruten ayuda a mantener el hábito.",
+      "Ser constante, no perfecto, es la clave del progreso."
     ],
     emojis: {
       "caminar-20-30-minutos": "🚶",
@@ -49,7 +49,7 @@ const categoryExtraDetails: Record<string, {
     }
   },
   "sueno-descanso": {
-    heroTitle: "Duerme bien, recarga tu cerebro",
+    heroTitle: "Dormir bien para recargar el cerebro",
     heroDesc: "El descanso nocturno de calidad limpia las toxinas acumuladas en el cerebro y consolida la memoria diaria.",
     heroHighlight: "Dormir de 7 a 9 horas seguidas mejora tu enfoque, reduce la fatiga mental y estabiliza tu humor.",
     heroImage: "/meditation_hero.jpg",
@@ -59,9 +59,9 @@ const categoryExtraDetails: Record<string, {
       { icon: "🔧", title: "Reparación", desc: "Regenera tus músculos y sistema inmune." }
     ],
     steps: [
-      "Evita pantallas 45 minutos antes de dormir.",
-      "Mantén tu habitación fresca y completamente a oscuras.",
-      "Intenta levantarte a la misma hora todos los días."
+      "Evitar pantallas 45 minutos antes de dormir favorece la producción de melatonina.",
+      "Mantener la habitación fresca y completamente a oscuras mejora la calidad del sueño.",
+      "Levantarse a la misma hora todos los días ayuda a regular el ritmo circadiano."
     ],
     emojis: {
       "horario-regular-de-sueno": "⏰",
@@ -80,9 +80,9 @@ const categoryExtraDetails: Record<string, {
       { icon: "💡", title: "Claridad mental", desc: "Aporta grasas buenas para las neuronas." }
     ],
     steps: [
-      "Toma un vaso de agua al despertar.",
-      "Dedica al menos 20 minutos a comer sin ver pantallas.",
-      "Suma una verdura fresca o fruta a cada comida."
+      "Tomar un vaso de agua al despertar rehidrata el cuerpo tras el ayuno nocturno.",
+      "Dedicar al menos 20 minutos a comer sin pantallas favorece la digestión y la saciedad.",
+      "Sumar una verdura fresca o fruta a cada comida aumenta la densidad nutricional."
     ],
     emojis: {
       "comer-a-horas-regulares": "🍽️",
@@ -92,7 +92,7 @@ const categoryExtraDetails: Record<string, {
     }
   },
   "bienestar-mental": {
-    heroTitle: "Calma tu mente del ruido diario",
+    heroTitle: "Calmar la mente del ruido diario",
     heroDesc: "El estrés y la sobreestimulación digital agotan tus recursos cognitivos. Las pausas de presencia devuelven el equilibrio.",
     heroHighlight: "Con solo unos minutos de respiración pausada regulas el ritmo cardíaco y calmas la rumiación.",
     heroImage: "/meditation_hero.jpg",
@@ -102,9 +102,9 @@ const categoryExtraDetails: Record<string, {
       { icon: "🌱", title: "Resiliencia", desc: "Mejor regulación ante imprevistos." }
     ],
     steps: [
-      "Realiza 3 respiraciones profundas al sentir tensión.",
-      "Escribe dos cosas sencillas por las que estás agradecido.",
-      "Tómate 10 minutos para pasear o descansar sin el móvil."
+      "Realizar 3 respiraciones profundas al sentir tensión activa el sistema nervioso parasimpático.",
+      "Escribir dos cosas sencillas por las que estar agradecido entrena el sesgo atencional positivo.",
+      "Tomarse 10 minutos para pasear o descansar sin el móvil permite al cerebro resetearse."
     ],
     emojis: {
       "respiracion-consciente-diaria": "💨",
