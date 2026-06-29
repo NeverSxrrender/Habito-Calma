@@ -54,12 +54,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 text-center text-sm text-foreground/80">
+        <div className="mt-8 pt-6 border-t border-white/10 space-y-3 text-center text-sm text-foreground/80">
+          <div className="flex items-start justify-center gap-2.5 p-3 rounded-xl bg-warning/10 border border-warning/20 max-w-2xl mx-auto text-left">
+            <span className="shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center rounded-full bg-warning/20 text-warning text-xs font-bold">!</span>
+            <p>Este contenido es informativo y no sustituye el consejo de un profesional de la salud. No pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad. Si tienes alguna condición médica o dudas, consulta con tu médico.</p>
+          </div>
           <p>
-            Este contenido está creado con ayuda de IA, revisado y curado por humanos. No sustituye consejo médico,
-            psicológico ni profesional.
+            Este contenido está creado con ayuda de IA, revisado y curado por humanos. Puede contener errores.
           </p>
-          <p className="mt-2">&copy; {new Date().getFullYear()} Hábito Calma</p>
+          <p>&copy; {new Date().getFullYear()} Hábito Calma</p>
         </div>
       </div>
     </footer>

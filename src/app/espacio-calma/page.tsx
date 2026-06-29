@@ -130,7 +130,7 @@ export default function EspacioCalmaPage() {
                       {showDisclaimer && (
                         <div className="bg-warning/10 border border-warning/20 rounded-xl p-4 text-xs text-white/60 leading-relaxed space-y-2">
                           <p>
-                            Las técnicas de respiración aquí descritas son herramientas de relajación general y no sustituyen atención médica ni tratamiento profesional.
+                            Las técnicas de respiración aquí descritas son herramientas de relajación general. No sustituyen atención médica ni tratamiento profesional. Esta información no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad.
                           </p>
                           <p className="font-medium">
                             Estas técnicas son seguras para la gran mayoría de las personas. Si sientes mareo o molestias, detente y respira con normalidad. Su uso es bajo tu propia responsabilidad.
